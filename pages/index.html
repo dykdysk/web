@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donuts</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo"></div>
+                <div class="company-name">Donuts</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="#promotions">Акции</a></li>
+                    <li><a href="#boxes">Боксы</a></li>
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="authentication.html" class="btn btn-login">Войти</a>
+                <button class="btn btn-cart" id="cart-button">
+                    Корзина <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Пончики</h1>
+            <p>из натуральных и свежих ингредиентов<br>
+                По оригинальной американской технологии</p>
+            <p>Пончики - это не просто превосходный десерт,<br>
+                но и достойное угощение, которое можно<br>
+                выбрать в качестве подарка для любого случая</p>
+            <a href="#catalog" class="btn btn-catalog">Каталог</a>
+        </div>
+        <div class="hero-image">
+            <img src="../images/img.png" alt="Вкусные пончики">
+        </div>
+    </div>
+</section>
+
+<section class="promotions" id="promotions">
+    <div class="container">
+        <h2 class="section-title">Лучшие акции</h2>
+        <div class="promotions-container">
+            <div class="promotions-track" id="promotions-track">
+            </div>
+            <div class="promotion-nav" id="promotion-nav">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="boxes" id="boxes">
+    <div class="container">
+        <h2 class="section-title">Собери свой бокс</h2>
+        <div class="boxes-container">
+        </div>
+    </div>
+</section>
+
+<div class="modal-overlay" id="box-modal-overlay">
+    <div class="modal-content box-builder-modal">
+        <div class="modal-header">
+            <h2 class="modal-title" id="box-modal-title">Собрать свой бокс</h2>
+            <button class="close-modal" id="close-box-modal">&times;</button>
+        </div>
+
+        <div class="modal-divider"></div>
+
+        <div class="box-builder-content">
+            <div class="box-options-screen" id="box-options-screen">
+                <div class="box-options-row">
+                    <div class="box-option-group compact">
+                        <h3>Количество пончиков</h3>
+                        <div class="quantity-options">
+                            <button class="quantity-option active" data-quantity="4">4</button>
+                            <button class="quantity-option" data-quantity="8">8</button>
+                            <button class="quantity-option" data-quantity="12">12</button>
+                        </div>
+                    </div>
+
+                    <div class="box-option-group compact">
+                        <h3>Цветы</h3>
+                        <div class="toggle-options">
+                            <button class="toggle-option" data-option="flowers" data-value="no">Нет</button>
+                            <button class="toggle-option active" data-option="flowers" data-value="yes">Да</button>
+                        </div>
+                    </div>
+
+                    <div class="box-option-group compact">
+                        <h3>Открытка</h3>
+                        <div class="toggle-options">
+                            <button class="toggle-option active" data-option="card" data-value="no">Нет</button>
+                            <button class="toggle-option" data-option="card" data-value="yes">Да</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-catalog-section">
+                    <div class="catalog-tabs compact-tabs">
+                        <div class="catalog-tab active" data-category="all">Все</div>
+                        <div class="catalog-tab" data-category="glazed">В глазури</div>
+                        <div class="catalog-tab" data-category="classic">Классические</div>
+                        <div class="catalog-tab" data-category="powdered">Напудренные</div>
+                        <div class="catalog-tab" data-category="with-sprinkles">С посыпкой</div>
+                        <div class="catalog-tab" data-category="filled">С начинкой</div>
+                    </div>
+
+                    <div class="box-catalog-items" id="box-catalog-items">
+                    </div>
+                    <div class="selection-limit-message" id="selection-limit-message" style="display: none;">
+                        Достигнут лимит пончиков для этого бокса
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn btn-next" id="next-to-summary">Далее</button>
+                </div>
+            </div>
+
+            <div class="box-summary-screen" id="box-summary-screen" style="display: none;">
+                <h3>Ваш выбор</h3>
+                <div class="selected-items-container" id="selected-items-container">
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn btn-back" id="back-to-options">Назад</button>
+                    <button class="btn btn-add-to-cart-final" id="add-box-to-cart">Добавить в корзину</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="catalog" id="catalog">
+    <div class="container">
+        <h2 class="section-title">Каталог</h2>
+        <div class="catalog-tabs">
+            <div class="catalog-tab active" data-category="all">Все</div>
+            <div class="catalog-tab" data-category="glazed">В глазури</div>
+            <div class="catalog-tab" data-category="classic">Классические</div>
+            <div class="catalog-tab" data-category="powdered">Напудренные</div>
+            <div class="catalog-tab" data-category="with-sprinkles">С посыпкой</div>
+            <div class="catalog-tab" data-category="filled">С начинкой</div>
+        </div>
+        <div class="catalog-items">
+        </div>
+    </div>
+</section>
+
+<div class="cart-overlay" id="cart-overlay"></div>
+<div class="cart-panel" id="cart-panel">
+    <div class="cart-header">
+        <h2 class="cart-title">Корзина</h2>
+        <button class="close-cart" id="close-cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+        <p class="empty-cart-message" id="empty-cart-message">Ваша корзина пуста</p>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Итого:</span>
+            <span id="cart-total">0 BYN</span>
+        </div>
+        <button class="btn btn-checkout" id="checkout-button">Оформить заказ</button>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-content" id="contacts">
+            <div class="footer-section">
+                <h3>О нас</h3>
+                <p>Мы готовим самые вкусные пончики по оригинальной технологии из натуральных ингредиентов.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>г. Пончик, ул. Пончиковая, д. 21</p>
+                <p>+375 (29) 123-45-67</p>
+                <p>info@donuts.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Часы работы</h3>
+                <p>Пн-Пт: 9:00 - 22:00</p>
+                <p>Сб-Вс: 10:00 - 21:00</p>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 Donuts Shop. Все права защищены.
+        </div>
+    </div>
+</footer>
+
+<script src="../scripts/core/data.js"></script>
+<script src="../scripts/core/utils.js"></script>
+<script src="../scripts/core/cart.js"></script>
+<script src="../scripts/components/promotions.js"></script>
+<script src="../scripts/components/box-builder.js"></script>
+<script src="../scripts/pages/index.js"></script>
+</body>
+</html>

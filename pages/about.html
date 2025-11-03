@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donuts</title>
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/about.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo"></div>
+                <div class="company-name">Donuts</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="#why-us">Почему мы?</a></li>
+                    <li><a href="#location">Местоположение</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="authentication.html" class="btn btn-login">Войти</a>
+                <button class="btn btn-cart" id="cart-button">
+                    Корзина <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="about-hero" id="why-us">
+    <div class="container">
+        <h1 class="about-title">Почему именно мы?</h1>
+        <p class="about-description">
+            Мы используем только натуральные ингредиенты. Заказывая нашу продукцию,
+            вы можете быть уверены в качестве и свежести наших десертов.
+            Наши кондитеры делают каждый пончик с любовью!
+        </p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="feature-icon">🍩</div>
+                        <h3>Быстрая доставка</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Доставляем ваши любимые пончики в течение 30 минут по всему городу. Всегда свежие и горячие!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="feature-icon">🍩</div>
+                        <h3>Удобная оплата</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Принимаем все виды платежей: наличные, карты, онлайн-оплата. Быстро и безопасно!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="feature-icon">🍩</div>
+                        <h3>Самые свежие пончики</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Готовим пончики несколько раз в день. Никаких заготовок - только свежая выпечка!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="feature-icon">🍩</div>
+                        <h3>Неповторимый вкус</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Секретные рецепты и только натуральные ингредиенты. Вкус, который нельзя забыть!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="location-section" id="location">
+    <div class="container">
+        <h2 class="section-title">Наши кофейни в Гродно</h2>
+        <div class="location-content-wrapper">
+            <div class="location-content">
+                <div class="map-container">
+                    <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15060.291442081963!2d23.812734753353815!3d53.67756721664581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dfd61c6c1a3d9f%3A0x5e8f5b6b5b5b5b5b!2z0JPQu9Cw0LLQvdCw0Y8g0YPQuy4sINCz0L7RgNC-0LQg0Y_QvdC40YbRjw!5e0!3m2!1sru!2sby!4v1620000000000!5m2!1sru!2sby"
+                            width="100%"
+                            height="450"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="addresses-container">
+                    <h3>Адреса наших кофеен:</h3>
+                    <div class="address-item">
+                        <h4>Центральная кофейня</h4>
+                        <p>г. Гродно, ул. Советская, 15</p>
+                        <p> +375 (29) 123-45-67</p>
+                        <p>Пн-Вс: 8:00 - 23:00</p>
+                        <a href="https://maps.google.com/?q=Гродно,ул.Советская,15" target="_blank" class="map-link">Открыть в Google Maps</a>
+                    </div>
+                    <div class="address-item">
+                        <h4>Кофейня на Замковой</h4>
+                        <p>г. Гродно, ул. Замковая, 7</p>
+                        <p>+375 (29) 765-43-21</p>
+                        <p>Пн-Вс: 9:00 - 22:00</p>
+                        <a href="https://maps.google.com/?q=Гродно,ул.Замковая,7" target="_blank" class="map-link">Открыть в Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="cart-overlay" id="cart-overlay"></div>
+<div class="cart-panel" id="cart-panel">
+    <div class="cart-header">
+        <h2 class="cart-title">Корзина</h2>
+        <button class="close-cart" id="close-cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+        <p class="empty-cart-message" id="empty-cart-message">Ваша корзина пуста</p>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Итого:</span>
+            <span id="cart-total">0 BYN</span>
+        </div>
+        <button class="btn btn-checkout" id="checkout-button">Оформить заказ</button>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-content" id="contacts">
+            <div class="footer-section">
+                <h3>О нас</h3>
+                <p>Мы готовим самые вкусные пончики по оригинальной американской технологии из натуральных ингредиентов.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>г. Пончик, ул. Пончиковая, д. 21</p>
+                <p>+375 (29) 123-45-67</p>
+                <p>info@donuts.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Часы работы</h3>
+                <p>Пн-Пт: 9:00 - 22:00</p>
+                <p>Сб-Вс: 10:00 - 21:00</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Donuts Shop. Все права защищены.
+        </div>
+    </div>
+</footer>
+
+<script src="../scripts/core/data.js"></script>
+<script src="../scripts/core/utils.js"></script>
+<script src="../scripts/core/cart.js"></script>
+<script src="../scripts/pages/about.js"></script>
+</body>
+</html>
