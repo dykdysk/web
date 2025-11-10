@@ -1,7 +1,7 @@
 <?php
 class PromotionRepository {
     private $conn;
-    private $table = 'promotions';
+    private $table = 'promotion';
 
     public function __construct($db) {
         $this->conn = $db;

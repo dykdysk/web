@@ -1,7 +1,7 @@
 <?php
 class BoxRepository {
     private $conn;
-    private $table = 'boxes';
+    private $table = 'box';
 
     public function __construct($db) {
         $this->conn = $db;

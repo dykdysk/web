@@ -1,7 +1,7 @@
 <?php
 class DonutRepository {
     private $conn;
-    private $table = 'donuts';
+    private $table = 'donut';
 
     public function __construct($db) {
         $this->conn = $db;
