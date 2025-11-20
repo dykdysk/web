@@ -25,4 +25,7 @@ class DonutService {
     public function getDonutsByPrice(float $price): array {
         return $this->donutRepository->findByPrice($price);
     }
+    public function getDonutsByIsNew(bool $isNew): array {
+        return $this->donutRepository->findByIsNew($isNew);
+    }
 }

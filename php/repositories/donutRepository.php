@@ -20,7 +20,8 @@ class DonutRepository {
             $donut->description = $row['description'];
             $donut->price = $row['price'];
             $donut->image = $row['image'];
-            $donut->category = $row['category'];
+            $donut->categories = $this->parsePgArray($row['category']);
+            $donut->isNew = $row['isNew'];
             $donuts[] = $donut;
         }
         return $donuts;
@@ -43,7 +44,8 @@ class DonutRepository {
         $donut->description = $row['description'];
         $donut->price = $row['price'];
         $donut->image = $row['image'];
-        $donut->category = $row['category'];
+        $donut->categories = $this->parsePgArray($row['categories']);
+        $donut->isNew = $row['isNew'];
         return $donut;
     }
 
@@ -62,14 +64,15 @@ class DonutRepository {
             $donut->description = $row['description'];
             $donut->price = $row['price'];
             $donut->image = $row['image'];
-            $donut->category = $row['category'];
+            $donut->categories = $this->parsePgArray($row['categories']);
+            $donut->isNew = $row['isNew'];
             $donuts[] = $donut;
         }
         return $donuts;
     }
 
     public function findByCategory(string $category): array {
-        $query = "SELECT * FROM " . $this->table . " WHERE category = :category";
+        $query = "SELECT * FROM " . $this->table . " WHERE :category = ANY(categories)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':category', $category);
         $stmt->execute();
@@ -82,7 +85,8 @@ class DonutRepository {
             $donut->description = $row['description'];
             $donut->price = $row['price'];
             $donut->image = $row['image'];
-            $donut->category = $row['category'];
+            $donut->categories = $this->parsePgArray($row['categories']);
+            $donut->isNew = $row['isNew'];
             $donuts[] = $donut;
         }
         return $donuts;
@@ -102,9 +106,43 @@ class DonutRepository {
             $donut->description = $row['description'];
             $donut->price = $row['price'];
             $donut->image = $row['image'];
-            $donut->category = $row['category'];
+            $donut->categories = $this->parsePgArray($row['categories']);
+            $donut->isNew = $row['isNew'];
             $donuts[] = $donut;
         }
         return $donuts;
+    }
+    public function findByIsNew(bool $isNew): array {
+        $query = "SELECT * FROM " . $this->table . " WHERE isNew = :isNew";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':isNew', $isNew);
+        $stmt->execute();
+
+        $donuts = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $donut = new Donut();
+            $donut->id = $row['id'];
+            $donut->name = $row['name'];
+            $donut->description = $row['description'];
+            $donut->price = $row['price'];
+            $donut->image = $row['image'];
+            $donut->categories = $this->parsePgArray($row['categories']);
+            $donut->isNew = $row['isNew'];
+            $donuts[] = $donut;
+        }
+        return $donuts;
+    }
+    private function parsePgArray($pgArray) {
+        if ($pgArray === null || $pgArray === '') {
+            return [];
+        }
+        if (is_array($pgArray)) {
+            return $pgArray;
+        }
+        $pgArray = trim($pgArray, '{}');
+        if ($pgArray === '') {
+            return [];
+        }
+        return explode(',', $pgArray);
     }
 }

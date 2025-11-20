@@ -14,7 +14,4 @@ class PromotionService {
         return $this->promotionRepository->findById($id);
     }
 
-    public function getPromotionsByTitle(string $title): array {
-        return $this->promotionRepository->findByTitle($title);
-    }
 }

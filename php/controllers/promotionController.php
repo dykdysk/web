@@ -29,15 +29,6 @@ class PromotionController {
         try {
             $promotion = $this->promotionService->getPromotionById($id);
 
-            if (!$promotion) {
-                http_response_code(404);
-                echo json_encode([
-                    'success' => false,
-                    'error' => 'Promotion not found'
-                ]);
-                return;
-            }
-
             header('Content-Type: application/json');
             echo json_encode([
                 'success' => true,
@@ -49,25 +40,6 @@ class PromotionController {
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch promotion'
-            ]);
-        }
-    }
-
-    public function getPromotionsByTitle($title) {
-        try {
-            $promotions = $this->promotionService->getPromotionsByTitle($title);
-
-            header('Content-Type: application/json');
-            echo json_encode([
-                'success' => true,
-                'data' => $promotions
-            ]);
-
-        } catch (Exception $e) {
-            http_response_code(500);
-            echo json_encode([
-                'success' => false,
-                'error' => 'Failed to fetch promotions by title'
             ]);
         }
     }

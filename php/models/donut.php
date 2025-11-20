@@ -5,5 +5,6 @@ class Donut {
     public $description;
     public $price;
     public $image;
-    public $category;
+    public $categories;
+    public $isNew;
 }

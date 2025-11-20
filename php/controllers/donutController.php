@@ -109,4 +109,22 @@ class DonutController {
             ]);
         }
     }
+    public function getDonutsByIsNew($isNew) {
+        try {
+            $donuts = $this->donutService->getDonutsByIsNew($isNew);
+
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => true,
+                'data' => $donuts
+            ]);
+
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'success' => false,
+                'error' => 'Failed to fetch donuts by price'
+            ]);
+        }
+    }
 }
