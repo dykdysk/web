@@ -14,14 +14,14 @@ class BoxController {
             echo json_encode([
                 'success' => true,
                 'data' => $boxes
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch boxes'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -29,27 +29,18 @@ class BoxController {
         try {
             $box = $this->boxService->getBoxById($id);
 
-            if (!$box) {
-                http_response_code(404);
-                echo json_encode([
-                    'success' => false,
-                    'error' => 'Box not found'
-                ]);
-                return;
-            }
-
             header('Content-Type: application/json');
             echo json_encode([
                 'success' => true,
                 'data' => $box
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch box'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -61,14 +52,14 @@ class BoxController {
             echo json_encode([
                 'success' => true,
                 'data' => $boxes
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch boxes by title'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -80,14 +71,14 @@ class BoxController {
             echo json_encode([
                 'success' => true,
                 'data' => $boxes
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch boxes by quantity'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -99,14 +90,14 @@ class BoxController {
             echo json_encode([
                 'success' => true,
                 'data' => $boxes
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch boxes by price'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 }

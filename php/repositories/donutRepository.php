@@ -20,7 +20,7 @@ class DonutRepository {
             $donut->description = $row['description'];
             $donut->price = $row['price'];
             $donut->image = $row['image'];
-            $donut->categories = $this->parsePgArray($row['category']);
+            $donut->categories = $this->parsePgArray($row['categories']);
             $donut->isNew = $row['isNew'];
             $donuts[] = $donut;
         }

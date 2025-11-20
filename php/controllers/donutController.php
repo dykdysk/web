@@ -14,14 +14,14 @@ class DonutController {
             echo json_encode([
                 'success' => true,
                 'data' => $donuts
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch donuts'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -29,27 +29,18 @@ class DonutController {
         try {
             $donut = $this->donutService->getDonutById($id);
 
-            if (!$donut) {
-                http_response_code(404);
-                echo json_encode([
-                    'success' => false,
-                    'error' => 'Donut not found'
-                ]);
-                return;
-            }
-
             header('Content-Type: application/json');
             echo json_encode([
                 'success' => true,
                 'data' => $donut
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch donut'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -61,14 +52,14 @@ class DonutController {
             echo json_encode([
                 'success' => true,
                 'data' => $donuts
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch donuts by name'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -80,14 +71,14 @@ class DonutController {
             echo json_encode([
                 'success' => true,
                 'data' => $donuts
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch donuts by category'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -99,14 +90,14 @@ class DonutController {
             echo json_encode([
                 'success' => true,
                 'data' => $donuts
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch donuts by price'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
     public function getDonutsByIsNew($isNew) {
@@ -117,14 +108,14 @@ class DonutController {
             echo json_encode([
                 'success' => true,
                 'data' => $donuts
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch donuts by price'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 }

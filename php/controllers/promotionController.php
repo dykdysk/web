@@ -14,14 +14,14 @@ class PromotionController {
             echo json_encode([
                 'success' => true,
                 'data' => $promotions
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch promotions'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -33,14 +33,14 @@ class PromotionController {
             echo json_encode([
                 'success' => true,
                 'data' => $promotion
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'success' => false,
                 'error' => 'Failed to fetch promotion'
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 }
