@@ -394,3 +394,8 @@
     min-width: 20px;
     font-size: 14px;
 }
+
+#next-to-summary {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}

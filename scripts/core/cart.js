@@ -4,12 +4,15 @@ const DonutsCart = {
         this.updateCart();
     },
 
+
+
     setupCartEvents() {
         const cartButton = document.getElementById('cart-button');
         const closeCart = document.getElementById('close-cart');
         const cartOverlay = document.getElementById('cart-overlay');
         const cartPanel = document.getElementById('cart-panel');
         const checkoutButton = document.getElementById('checkout-button');
+        const clearCartButton = document.getElementById('clear-cart-button');
 
         if (!cartButton || !closeCart || !cartOverlay || !cartPanel) return;
 
@@ -20,6 +23,20 @@ const DonutsCart = {
 
         if (checkoutButton) {
             checkoutButton.addEventListener('click', () => this.checkout());
+        }
+
+        if (clearCartButton) {
+            clearCartButton.addEventListener('click', () => this.clearCart());
+        }
+    },
+
+    clearCart() {
+        if (confirm('Вы уверены, что хотите очистить корзину?')) {
+            localStorage.setItem('donutsCart', JSON.stringify([]));
+            localStorage.setItem('boxCartItems', JSON.stringify([]));
+            this.updateCart();
+            DonutsUtils.showNotification('Корзина очищена', 'info');
+            this.closeCart();
         }
     },
 

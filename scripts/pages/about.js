@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     DonutsCart.init();
     DonutsUtils.initSmoothScroll();
+    DonutsReviews.init(); // Добавляем инициализацию отзывов
 });
-
 
 function setupCartEditHandlers() {
     document.addEventListener('click', function(e) {

@@ -1,19 +1,20 @@
 @import url('../styles/base/reset.css');
 @import url('../styles/base/animations.css');
-@import url('../styles/components/buttons.css');
+@import url('../styles/base/variables.css');
 
+@import url('../styles/components/buttons.css');
+@import url('../styles/components/cart.css');
+@import url('../styles/components/modal.css');
 
 @import url('../styles/layout/header.css');
 @import url('../styles/layout/footer.css');
 @import url('../styles/layout/hero.css');
 @import url('../styles/layout/sections.css');
-
-@import url('../styles/components/cart.css');
-@import url('../styles/components/modal.css');
-
+@import url('../styles/layout/reviews.css');
 
 @import url('../styles/pages/about.css');
 @import url('../styles/pages/checkout.css');
+
 
 
 .new-badge {
@@ -122,3 +123,14 @@
     }
 }
 
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.empty-state-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}

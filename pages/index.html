@@ -25,7 +25,6 @@
                 </ul>
             </nav>
             <div class="header-buttons">
-                <a href="authentication.html" class="btn btn-login">Войти</a>
                 <button class="btn btn-cart" id="cart-button">
                     Корзина <span class="cart-count">0</span>
                 </button>
@@ -184,7 +183,12 @@
             <span>Итого:</span>
             <span id="cart-total">0 BYN</span>
         </div>
-        <button class="btn btn-checkout" id="checkout-button">Оформить заказ</button>
+        <div class="cart-actions">
+            <button class="btn-clear-cart" id="clear-cart-button" title="Очистить корзину">
+                <div class="icon"></div>
+            </button>
+            <button class="btn btn-checkout" id="checkout-button">Оформить заказ</button>
+        </div>
     </div>
 </div>
 
