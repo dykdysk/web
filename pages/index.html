@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donuts</title>
-    <link rel="stylesheet" href="../styles/common.css">
-    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
 
@@ -56,10 +55,9 @@
     <div class="container">
         <h2 class="section-title">Лучшие акции</h2>
         <div class="promotions-container">
-            <div class="promotions-track" id="promotions-track">
-            </div>
-            <div class="promotion-nav" id="promotion-nav">
-            </div>
+            <div class="promotions-track" id="promotions-track"></div>
+            <button class="carousel-btn prev-btn">‹</button>
+            <button class="carousel-btn next-btn">›</button>
         </div>
     </div>
 </section>
@@ -113,11 +111,16 @@
                 <div class="box-catalog-section">
                     <div class="catalog-tabs compact-tabs">
                         <div class="catalog-tab active" data-category="all">Все</div>
+
                         <div class="catalog-tab" data-category="glazed">В глазури</div>
                         <div class="catalog-tab" data-category="classic">Классические</div>
                         <div class="catalog-tab" data-category="powdered">Напудренные</div>
                         <div class="catalog-tab" data-category="with-sprinkles">С посыпкой</div>
                         <div class="catalog-tab" data-category="filled">С начинкой</div>
+                        <div class="catalog-tab" data-category="new-year">
+                        Новогодние
+                        <span class="new-badge">Новинка</span>
+                    </div>
                     </div>
 
                     <div class="box-catalog-items" id="box-catalog-items">
@@ -151,11 +154,16 @@
         <h2 class="section-title">Каталог</h2>
         <div class="catalog-tabs">
             <div class="catalog-tab active" data-category="all">Все</div>
+
             <div class="catalog-tab" data-category="glazed">В глазури</div>
             <div class="catalog-tab" data-category="classic">Классические</div>
             <div class="catalog-tab" data-category="powdered">Напудренные</div>
             <div class="catalog-tab" data-category="with-sprinkles">С посыпкой</div>
             <div class="catalog-tab" data-category="filled">С начинкой</div>
+            <div class="catalog-tab" data-category="new-year">
+            Новогодние
+            <span class="new-badge">Новинка</span>
+        </div>
         </div>
         <div class="catalog-items">
         </div>

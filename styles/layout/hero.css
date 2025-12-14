@@ -1,0 +1,49 @@
+.hero .container {
+    padding-top: 60px;
+    padding-bottom: 160px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 50%;
+    padding-right: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 100px;
+    color: #323030;
+    margin-bottom: 5px;
+}
+
+.hero p {
+    line-height: 1.7;
+    margin-bottom: 50px;
+    font-weight: 500;
+}
+
+.hero-image {
+    position: absolute;
+    right: 0;
+    top: 10%;
+    flex: 1;
+    text-align: center;
+    z-index: 1;
+    transform: scale(0.9);
+    width: 60%;
+}
+
+.hero-image img {
+    border-radius: 10px;
+    transform: translateY(0);
+    transition: transform 0.5s ease;
+}
+
+.hero-image img:hover {
+    transform: translateY(-10px);
+}

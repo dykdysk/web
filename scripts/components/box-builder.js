@@ -84,26 +84,27 @@ const DonutsBoxBuilder = {
         let catalogContainer = document.getElementById('box-catalog-items');
         if (!catalogContainer) return;
 
-        // Создаем клон контейнера (без обработчиков событий)
         const newCatalogContainer = catalogContainer.cloneNode(false);
         catalogContainer.parentNode.replaceChild(newCatalogContainer, catalogContainer);
 
-        // Теперь работаем с newCatalogContainer
         catalogContainer = newCatalogContainer;
-
         catalogContainer.innerHTML = '';
 
-        const donutsOnly = DonutsData.catalog.filter(item => item.category !== 'beverages');
+        const donutsOnly = DonutsData.catalog.filter(item => !item.categories.includes('beverages'));
 
         donutsOnly.forEach(donut => {
             const existingItem = this.currentBoxConfig.selectedDonuts.find(item => item.id === donut.id);
             const quantity = existingItem ? existingItem.quantity : 0;
 
+            // Добавляем бейдж "Новинка" если пончик новый
+            const newBadge = donut.isNew ? '<span class="new-badge">Новинка</span>' : '';
+
             const donutItem = document.createElement('div');
             donutItem.className = 'box-catalog-item';
             donutItem.setAttribute('data-id', donut.id.toString());
-            donutItem.setAttribute('data-category', donut.category);
+            donutItem.setAttribute('data-categories', donut.categories.join(' '));
             donutItem.innerHTML = `
+            ${newBadge}
             <img src="${donut.image}" alt="${donut.name}">
             <div class="box-item-title">${donut.name}</div>
             <div class="box-item-price">${donut.price} BYN</div>
@@ -120,7 +121,6 @@ const DonutsBoxBuilder = {
             catalogContainer.appendChild(donutItem);
         });
 
-        // Добавляем обработчик событий на новый контейнер
         catalogContainer.addEventListener('click', (e) => {
             if (e.target.classList.contains('btn-add-to-box')) {
                 this.addDonutToBox(e.target.getAttribute('data-id'));
@@ -136,6 +136,7 @@ const DonutsBoxBuilder = {
         this.initBoxCatalogTabs();
     },
 
+
     initBoxCatalogTabs() {
         const catalogTabs = document.querySelectorAll('.compact-tabs .catalog-tab');
         const catalogItems = document.querySelectorAll('.box-catalog-item');
@@ -147,7 +148,8 @@ const DonutsBoxBuilder = {
 
                 const category = e.target.getAttribute('data-category');
                 catalogItems.forEach(item => {
-                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                    const itemCategories = item.getAttribute('data-categories').split(' ');
+                    if (category === 'all' || itemCategories.includes(category)) {
                         item.style.display = 'flex';
                     } else {
                         item.style.display = 'none';
@@ -156,6 +158,7 @@ const DonutsBoxBuilder = {
             });
         });
     },
+
 
     setupBoxOptions() {
         document.querySelectorAll('.quantity-option').forEach(option => {
@@ -275,27 +278,42 @@ const DonutsBoxBuilder = {
     updateBoxNameByQuantity(quantity) {
         let newName = '';
         let newPrice = 0;
+        let newImage = '';
 
-        switch(quantity) {
-            case 4:
-                newName = 'Маленький';
-                newPrice = 4.5;
-                break;
-            case 8:
-                newName = 'Средний';
-                newPrice = 8;
-                break;
-            case 12:
-                newName = 'Большой';
-                newPrice = 11;
-                break;
-            default:
-                newName = 'Кастомный';
-                newPrice = quantity * 1.1;
+        // Находим соответствующий бокс в данных по количеству пончиков
+        const matchingBox = DonutsData.boxes.find(box => box.quantity === quantity);
+
+        if (matchingBox) {
+            newName = matchingBox.title;
+            newPrice = matchingBox.price;
+            newImage = matchingBox.image;
+        } else {
+            switch(quantity) {
+                case 4:
+                    newName = 'Маленький';
+                    newPrice = 4.5;
+                    newImage = "../images/бокс на 4.png";
+                    break;
+                case 8:
+                    newName = 'Средний';
+                    newPrice = 8;
+                    newImage = "../images/бокс на 8.png";
+                    break;
+                case 12:
+                    newName = 'Большой';
+                    newPrice = 11;
+                    newImage = "../images/бокс на 12.png";
+                    break;
+                default:
+                    newName = 'Кастомный';
+                    newPrice = quantity * 1.1;
+                    newImage = "../images/бокс на 8.png";
+            }
         }
 
         this.currentBoxConfig.name = newName;
         this.currentBoxConfig.price = newPrice;
+        this.currentBoxConfig.image = newImage;
 
         const addToCartButton = document.getElementById('add-box-to-cart');
         if (addToCartButton) {
@@ -391,22 +409,29 @@ const DonutsBoxBuilder = {
         const optionsScreen = document.getElementById('box-options-screen');
         const summaryScreen = document.getElementById('box-summary-screen');
         const selectedContainer = document.getElementById('selected-items-container');
+        const boxImageElement = document.getElementById('box-summary-image'); // Добавляем элемент для изображения бокса
 
         if (optionsScreen) optionsScreen.style.display = 'none';
         if (summaryScreen) summaryScreen.style.display = 'block';
         if (!selectedContainer) return;
+
+        // Обновляем изображение бокса
+        if (boxImageElement) {
+            boxImageElement.src = this.currentBoxConfig.image;
+            boxImageElement.alt = this.currentBoxConfig.name;
+        }
 
         selectedContainer.innerHTML = '';
         this.currentBoxConfig.selectedDonuts.forEach(donut => {
             const selectedItem = document.createElement('div');
             selectedItem.className = 'selected-item';
             selectedItem.innerHTML = `
-                <img src="${donut.image}" alt="${donut.name}">
-                <div class="selected-item-info">
-                    <div class="selected-item-name">${donut.name}</div>
-                    <div class="selected-item-quantity">Количество: ${donut.quantity}</div>
-                </div>
-            `;
+            <img src="${donut.image}" alt="${donut.name}">
+            <div class="selected-item-info">
+                <div class="selected-item-name">${donut.name}</div>
+                <div class="selected-item-quantity">Количество: ${donut.quantity}</div>
+            </div>
+        `;
             selectedContainer.appendChild(selectedItem);
         });
     },

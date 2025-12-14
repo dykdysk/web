@@ -49,8 +49,13 @@ function initCatalog() {
     DonutsData.catalog.forEach(item => {
         const catalogItem = document.createElement('div');
         catalogItem.className = 'catalog-item fade-in';
-        catalogItem.setAttribute('data-category', item.category);
+        catalogItem.setAttribute('data-categories', item.categories.join(' '));
+
+        // Добавляем бейдж "Новинка" если пончик новый
+        const newBadge = item.isNew ? '<span class="new-badge">Новинка</span>' : '';
+
         catalogItem.innerHTML = `
+            ${newBadge}
             <img src="${item.image}" alt="${item.name}">
             <h3 class="item-title">${item.name}</h3>
             <p class="item-description">${item.description}</p>
@@ -90,7 +95,8 @@ function initCatalogTabs() {
 
             const category = this.getAttribute('data-category');
             catalogItems.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
+                const itemCategories = item.getAttribute('data-categories').split(' ');
+                if (category === 'all' || itemCategories.includes(category)) {
                     item.style.display = 'flex';
                 } else {
                     item.style.display = 'none';
@@ -101,7 +107,6 @@ function initCatalogTabs() {
 }
 
 function setupCartEditHandlers() {
-    // Делегирование событий для динамически создаваемых кнопок
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('btn-edit-box')) {
             const index = e.target.getAttribute('data-box-index');

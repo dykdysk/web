@@ -1,0 +1,192 @@
+.btn {
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.btn-login {
+    padding: 4px 15px;
+    background-color: #dddddd;
+    color: #323030;
+    margin-right: 10px;
+}
+
+.btn-login:hover {
+    background-color: #c3c3c3;
+}
+
+.btn-cart {
+    background-color: #FF7E93;
+    color: white;
+}
+
+.btn-cart:hover {
+    background-color: #e67285;
+}
+
+.cart-count {
+    margin-left: 5px;
+}
+
+.btn-catalog {
+    background-color: #ffdc81;
+    color: #323030;
+    padding: 12px 50px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.btn-catalog:hover {
+    background-color: #edcb73;
+}
+
+.btn-assemble {
+    background-color: #ffd700;
+    color: #333;
+    padding: 8px 15px;
+    font-weight: bold;
+}
+
+.btn-add-to-cart {
+    background-color: #ffd700;
+    color: #333;
+    padding: 6px 12px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background-color: #FF7E93;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #e67285;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 126, 147, 0.3);
+}
+
+.btn-edit-order {
+    background-color: #ffd700;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-edit-order:hover {
+    background-color: #edcb73;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.btn-checkout {
+    background-color: #ff69b4;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    font-weight: bold;
+}
+
+.btn-edit-box {
+    background-color: #ffd700;
+    color: #333;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-remove-box {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-edit-box:hover {
+    background-color: #edcb73;
+}
+
+.btn-remove-box:hover {
+    background-color: #e55a5a;
+}
+
+.btn-add-to-box {
+    background-color: #ffd700;
+    color: #333;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.btn-add-to-box:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+.btn-next, .btn-add-to-cart-final {
+    background-color: #ffd700;
+    color: #333;
+    padding: 12px 30px;
+    font-weight: bold;
+}
+
+.btn-back {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 12px 30px;
+    font-weight: bold;
+}
+
+.btn-next:hover, .btn-add-to-cart-final:hover {
+    background-color: #edcb73;
+}
+
+.btn-back:hover {
+    background-color: #d0d0d0;
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 12px 30px;
+    font-weight: bold;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
