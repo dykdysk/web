@@ -14,8 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
     DonutsUtils.initScrollAnimations();
     initCatalogTabs();
     DonutsBoxBuilder.init();
-
+    DonutsHamburger.init();
     setupBoxAssembleHandlers();
+    setupMobileCardHover();
 });
 
 function initBoxes() {
@@ -27,6 +28,7 @@ function initBoxes() {
     DonutsData.boxes.forEach(box => {
         const boxItem = document.createElement('div');
         boxItem.className = 'box-item fade-in';
+        boxItem.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease';
         boxItem.innerHTML = `
             <img src="${box.image}" alt="${box.title}">
             <h3 class="box-title">${box.title}</h3>
@@ -37,6 +39,20 @@ function initBoxes() {
             </div>
         `;
         boxesContainer.appendChild(boxItem);
+
+        if ('ontouchstart' in window) {
+            boxItem.addEventListener('touchstart', () => {
+                boxItem.style.transform = 'translateY(-5px)';
+                boxItem.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+            });
+
+            boxItem.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    boxItem.style.transform = '';
+                    boxItem.style.boxShadow = '';
+                }, 300);
+            });
+        }
     });
 }
 
@@ -50,8 +66,8 @@ function initCatalog() {
         const catalogItem = document.createElement('div');
         catalogItem.className = 'catalog-item fade-in';
         catalogItem.setAttribute('data-categories', item.categories.join(' '));
+        catalogItem.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease';
 
-        // Добавляем бейдж "Новинка" если пончик новый
         const newBadge = item.isNew ? '<span class="new-badge">Новинка</span>' : '';
 
         catalogItem.innerHTML = `
@@ -65,6 +81,20 @@ function initCatalog() {
             </div>
         `;
         catalogItems.appendChild(catalogItem);
+
+        if ('ontouchstart' in window) {
+            catalogItem.addEventListener('touchstart', () => {
+                catalogItem.style.transform = 'translateY(-5px)';
+                catalogItem.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+            });
+
+            catalogItem.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    catalogItem.style.transform = '';
+                    catalogItem.style.boxShadow = '';
+                }, 300);
+            });
+        }
     });
 
     catalogItems.addEventListener('click', function(e) {
@@ -77,8 +107,10 @@ function initCatalog() {
             DonutsCart.addDonutToCart(id, name, price, image);
 
             e.target.textContent = 'Добавлено!';
+            e.target.style.backgroundColor = '#4CAF50';
             setTimeout(() => {
                 e.target.textContent = 'В корзину';
+                e.target.style.backgroundColor = '';
             }, 1000);
         }
     });
@@ -103,15 +135,11 @@ function initCatalogTabs() {
                 }
             });
         });
-    });
-}
 
-function setupCartEditHandlers() {
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('btn-edit-box')) {
-            const index = e.target.getAttribute('data-box-index');
-            DonutsBoxBuilder.editBoxFromCart(index);
-        }
+        tab.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            this.click();
+        });
     });
 }
 
@@ -127,5 +155,59 @@ function setupBoxAssembleHandlers() {
 
             DonutsBoxBuilder.openBuilder(boxId, boxName, boxPrice, boxImage, boxQuantity);
         }
+    });
+}
+
+function setupMobileCardHover() {
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(() => {
+            const promotionItems = document.querySelectorAll('.promotion-item');
+            const catalogItems = document.querySelectorAll('.catalog-item');
+            const boxItems = document.querySelectorAll('.box-item');
+
+            if ('ontouchstart' in window) {
+                promotionItems.forEach(item => {
+                    item.addEventListener('touchstart', function() {
+                        this.style.transform = 'translateY(-5px)';
+                        this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.15)';
+                    });
+
+                    item.addEventListener('touchend', function() {
+                        setTimeout(() => {
+                            this.style.transform = '';
+                            this.style.boxShadow = '';
+                        }, 300);
+                    });
+                });
+
+                catalogItems.forEach(item => {
+                    item.addEventListener('touchstart', function() {
+                        this.style.transform = 'translateY(-5px)';
+                        this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                    });
+
+                    item.addEventListener('touchend', function() {
+                        setTimeout(() => {
+                            this.style.transform = '';
+                            this.style.boxShadow = '';
+                        }, 300);
+                    });
+                });
+
+                boxItems.forEach(item => {
+                    item.addEventListener('touchstart', function() {
+                        this.style.transform = 'translateY(-5px)';
+                        this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                    });
+
+                    item.addEventListener('touchend', function() {
+                        setTimeout(() => {
+                            this.style.transform = '';
+                            this.style.boxShadow = '';
+                        }, 300);
+                    });
+                });
+            }
+        }, 1000);
     });
 }

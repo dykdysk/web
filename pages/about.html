@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Donuts</title>
     <link rel="stylesheet" href="../styles/main.css">
 </head>
@@ -11,6 +11,11 @@
 <header>
     <div class="container">
         <div class="header-content">
+            <button class="hamburger" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="logo-section">
                 <div class="logo"></div>
                 <div class="company-name">Donuts</div>
@@ -136,9 +141,7 @@
     <div class="container">
         <h2 class="section-title">Отзывы наших клиентов</h2>
 
-        <!-- Общий контейнер для формы и списка отзывов -->
         <div class="reviews-unified-container">
-            <!-- Верхняя часть: форма добавления отзыва -->
             <div class="add-review-form">
                 <h3>Оставить отзыв</h3>
                 <form id="review-form">
@@ -180,7 +183,7 @@
                 </form>
             </div>
 
-            <!-- Нижняя часть: список отзывов -->
+
             <div class="reviews-container">
                 <div class="reviews-header">
                     <h3>Все отзывы (<span id="total-reviews">0</span>)</h3>
@@ -195,12 +198,9 @@
                 </div>
 
                 <div class="reviews-list" id="reviews-list">
-                    <!-- Отзывы будут загружаться здесь -->
                 </div>
 
-                <!-- Пагинация -->
                 <div class="pagination" id="reviews-pagination">
-                    <!-- Кнопки пагинации будут созданы динамически -->
                 </div>
             </div>
         </div>
@@ -258,7 +258,14 @@
 <script src="../scripts/core/data.js"></script>
 <script src="../scripts/core/utils.js"></script>
 <script src="../scripts/core/cart.js"></script>
+<script src="../scripts/components/hamburger.js"></script>
+<script src="../scripts/components/responsive-events.js"></script>
 <script src="../scripts/components/reviews.js"></script>
 <script src="../scripts/pages/about.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        DonutsResponsive.init();
+    });
+</script>
 </body>
 </html>

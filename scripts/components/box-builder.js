@@ -96,7 +96,6 @@ const DonutsBoxBuilder = {
             const existingItem = this.currentBoxConfig.selectedDonuts.find(item => item.id === donut.id);
             const quantity = existingItem ? existingItem.quantity : 0;
 
-            // Добавляем бейдж "Новинка" если пончик новый
             const newBadge = donut.isNew ? '<span class="new-badge">Новинка</span>' : '';
 
             const donutItem = document.createElement('div');
@@ -280,7 +279,6 @@ const DonutsBoxBuilder = {
         let newPrice = 0;
         let newImage = '';
 
-        // Находим соответствующий бокс в данных по количеству пончиков
         const matchingBox = DonutsData.boxes.find(box => box.quantity === quantity);
 
         if (matchingBox) {
@@ -415,7 +413,6 @@ const DonutsBoxBuilder = {
         if (summaryScreen) summaryScreen.style.display = 'block';
         if (!selectedContainer) return;
 
-        // Обновляем изображение бокса
         if (boxImageElement) {
             boxImageElement.src = this.currentBoxConfig.image;
             boxImageElement.alt = this.currentBoxConfig.name;

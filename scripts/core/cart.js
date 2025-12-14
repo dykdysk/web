@@ -165,20 +165,6 @@ const DonutsCart = {
         return cartItem;
     },
 
-    updateCartCount() {
-        const cartCount = document.querySelector('.cart-count');
-        if (!cartCount) return;
-
-        const donutCart = DonutsUtils.safeJSONParse(localStorage.getItem('donutsCart'));
-        const boxesCart = DonutsUtils.safeJSONParse(localStorage.getItem('boxCartItems'));
-
-        const validDonuts = donutCart.filter(item => item && typeof item.price === 'number');
-        const validBoxes = boxesCart.filter(item => item && typeof item.price === 'number');
-
-        const donutCount = validDonuts.reduce((sum, item) => sum + item.quantity, 0);
-        const boxCount = validBoxes.length;
-        cartCount.textContent = donutCount + boxCount;
-    },
 
     addCartEventHandlers() {
         document.querySelectorAll('.quantity-btn.minus').forEach(button => {
@@ -297,5 +283,30 @@ const DonutsCart = {
         localStorage.setItem('donutsCart', JSON.stringify(donutCart));
         this.updateCart();
         DonutsUtils.showNotification(`${name} добавлен в корзину`);
+    },
+
+
+    updateCartCount() {
+        const cartCount = document.querySelector('.cart-count');
+        const mobileCartBtn = document.getElementById('mobile-cart-button');
+
+        if (!cartCount) return;
+
+        const donutCart = DonutsUtils.safeJSONParse(localStorage.getItem('donutsCart'));
+        const boxesCart = DonutsUtils.safeJSONParse(localStorage.getItem('boxCartItems'));
+
+        const validDonuts = donutCart.filter(item => item && typeof item.price === 'number');
+        const validBoxes = boxesCart.filter(item => item && typeof item.price === 'number');
+
+        const donutCount = validDonuts.reduce((sum, item) => sum + item.quantity, 0);
+        const boxCount = validBoxes.length;
+        const totalCount = donutCount + boxCount;
+
+        cartCount.textContent = totalCount;
+
+        if (mobileCartBtn) {
+            mobileCartBtn.querySelector('.cart-count').textContent = totalCount;
+        }
     }
 };
+

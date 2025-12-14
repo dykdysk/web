@@ -11,6 +11,11 @@
 <header>
     <div class="container">
         <div class="header-content">
+            <button class="hamburger" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="logo-section">
                 <div class="logo"></div>
                 <div class="company-name">Donuts</div>
@@ -117,9 +122,9 @@
                         <div class="catalog-tab" data-category="with-sprinkles">С посыпкой</div>
                         <div class="catalog-tab" data-category="filled">С начинкой</div>
                         <div class="catalog-tab" data-category="new-year">
-                        Новогодние
-                        <span class="new-badge">Новинка</span>
-                    </div>
+                            Новогодние
+                            <span class="new-badge">Новинка</span>
+                        </div>
                     </div>
 
                     <div class="box-catalog-items" id="box-catalog-items">
@@ -160,9 +165,9 @@
             <div class="catalog-tab" data-category="with-sprinkles">С посыпкой</div>
             <div class="catalog-tab" data-category="filled">С начинкой</div>
             <div class="catalog-tab" data-category="new-year">
-            Новогодние
-            <span class="new-badge">Новинка</span>
-        </div>
+                Новогодние
+                <span class="new-badge">Новинка</span>
+            </div>
         </div>
         <div class="catalog-items">
         </div>
@@ -220,8 +225,15 @@
 <script src="../scripts/core/data.js"></script>
 <script src="../scripts/core/utils.js"></script>
 <script src="../scripts/core/cart.js"></script>
+<script src="../scripts/components/hamburger.js"></script>
+<script src="../scripts/components/responsive-events.js"></script>
 <script src="../scripts/components/promotions.js"></script>
 <script src="../scripts/components/box-builder.js"></script>
 <script src="../scripts/pages/index.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        DonutsResponsive.init();
+    });
+</script>
 </body>
 </html>

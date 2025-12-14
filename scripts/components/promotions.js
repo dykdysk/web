@@ -27,6 +27,7 @@ const DonutsPromotions = {
         extendedPromotions.forEach((promotion, index) => {
             const promotionItem = document.createElement('div');
             promotionItem.className = 'promotion-item';
+            promotionItem.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease';
             promotionItem.innerHTML = `
             <div class="promotion-image-container">
                 <img src="${promotion.image}" alt="${promotion.title}">
@@ -36,10 +37,25 @@ const DonutsPromotions = {
             </div>
         `;
             promotionsTrack.appendChild(promotionItem);
+
+            if ('ontouchstart' in window) {
+                promotionItem.addEventListener('touchstart', () => {
+                    promotionItem.style.transform = 'translateY(-5px)';
+                    promotionItem.style.boxShadow = '0 10px 20px rgba(0,0,0,0.15)';
+                });
+
+                promotionItem.addEventListener('touchend', () => {
+                    setTimeout(() => {
+                        promotionItem.style.transform = '';
+                        promotionItem.style.boxShadow = '';
+                    }, 300);
+                });
+            }
         });
 
         this.currentIndex = 2;
         promotionsTrack.style.transform = `translateX(-${this.currentIndex * 250}px)`;
+        promotionsTrack.style.transition = 'transform 0.5s ease';
     },
 
     setupEventListeners() {
@@ -48,10 +64,18 @@ const DonutsPromotions = {
 
         if (nextBtn) {
             nextBtn.addEventListener('click', () => this.nextSlide());
+            nextBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.nextSlide();
+            });
         }
 
         if (prevBtn) {
             prevBtn.addEventListener('click', () => this.prevSlide());
+            prevBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.prevSlide();
+            });
         }
     },
 

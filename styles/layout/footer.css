@@ -37,3 +37,11 @@ footer {
     border-top: 1px solid #444;
     color: #999;
 }
+
+
+@media(min-width: 480px) {
+    .mobile-nav {
+        display: none;
+    }
+}
+

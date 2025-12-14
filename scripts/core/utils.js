@@ -29,6 +29,7 @@ const DonutsUtils = {
         }, 3000);
     },
 
+
     initSmoothScroll() {
         const navLinks = document.querySelectorAll('nav a[href^="#"]');
 

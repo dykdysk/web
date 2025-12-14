@@ -54,6 +54,7 @@
     flex: 1;
     overflow-y: auto;
     margin-bottom: 20px;
+    padding-right: 5px;
 }
 
 .cart-item {
@@ -61,6 +62,7 @@
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid #f0f0f0;
+    align-items: center;
 }
 
 .cart-item img {
@@ -69,30 +71,39 @@
     object-fit: cover;
     border-radius: 10px;
     margin-right: 15px;
+    flex-shrink: 0;
 }
 
 .cart-item-details {
     flex: 1;
+    min-width: 0;
 }
 
 .cart-item-title {
     font-weight: bold;
     margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .cart-item-price {
     color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
 }
 
 .cart-item-controls {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    gap: 10px;
 }
 
 .quantity-btn {
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
     background-color: #f0f0f0;
     border: none;
     border-radius: 50%;
@@ -100,10 +111,20 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.quantity-btn:hover {
+    background-color: #e0e0e0;
 }
 
 .item-quantity {
-    margin: 0 10px;
+    margin: 0 8px;
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
 }
 
 .cart-footer {
@@ -119,46 +140,38 @@
     margin-bottom: 20px;
 }
 
-.selected-items-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 25px;
-    max-height: 300px;
-    overflow-y: auto;
+.cart-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.selected-item {
+.btn-clear-cart {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ff6b6b;
+    border: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background: white;
-    height: 70px;
+    justify-content: center;
+    transition: all 0.3s;
+    flex-shrink: 0;
 }
 
-.selected-item img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 6px;
+.btn-clear-cart:hover {
+    background-color: #e55a5a;
+    transform: scale(1.1);
 }
 
-.selected-item-info {
-    flex: 1;
-}
-
-.selected-item-name {
-    font-weight: 600;
-    font-size: 13px;
-    margin-bottom: 4px;
-}
-
-.selected-item-quantity {
-    font-size: 11px;
-    color: #666;
+.btn-clear-cart .icon {
+    width: 20px;
+    height: 20px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="white" d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .box-cart-item {
@@ -179,7 +192,6 @@
     align-items: flex-start;
     padding: 15px;
     position: relative;
-    min-height: 120px;
     width: 100%;
 }
 
@@ -239,6 +251,7 @@
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
+    display: none;
 }
 
 .box-donuts-list h4 {
@@ -288,38 +301,79 @@
     justify-content: flex-end;
 }
 
-/* Контейнер для кнопок корзины */
-.cart-actions {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    justify-content: space-between;
-}
-
-/* Кнопка очистки корзины */
-.btn-clear-cart {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #ff6b6b;
+.btn-edit-box {
+    background-color: #ffd700;
+    color: #333;
     border: none;
+    padding: 8px 16px;
+    border-radius: 25px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s;
-    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background-color 0.3s;
 }
 
-.btn-clear-cart:hover {
+.btn-remove-box {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-edit-box:hover {
+    background-color: #edcb73;
+}
+
+.btn-remove-box:hover {
     background-color: #e55a5a;
-    transform: scale(1.1);
 }
 
-.btn-clear-cart .icon {
-    width: 20px;
-    height: 20px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="white" d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: center;
+/* Мобильная версия боксов в корзине */
+@media (max-width: 480px) {
+    .box-cart-header {
+        flex-direction: row;
+        padding: 10px;
+    }
+
+    .box-cart-header img {
+        width: 60px;
+        height: 60px;
+        margin-right: 10px;
+    }
+
+    .box-options-info {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 11px;
+    }
+
+    .box-donut-item {
+        padding: 8px;
+    }
+
+    .box-donut-item img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .box-donut-item span {
+        font-size: 12px;
+    }
+
+    .box-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .btn-edit-box,
+    .btn-remove-box {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
 }

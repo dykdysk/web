@@ -1,4 +1,4 @@
-/* Reviews Section */
+
 .reviews-section {
     padding: 80px 0;
     background-color: #f9f9f9;
@@ -10,17 +10,17 @@
     padding: 0 20px;
 }
 
-/* Единый контейнер для всей секции отзывов */
+
 .reviews-unified-container {
     background: white;
-    border-radius: 20px 20px 20px 20px; /* Все углы скруглены */
+    border-radius: 20px 20px 20px 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    overflow: hidden; /* Важно: скрываем переполнение для скругления */
+    overflow: hidden;
     width: 100%;
     margin-bottom: 40px;
 }
 
-/* Форма добавления отзыва - верхняя часть */
+
 .add-review-form {
     padding: 30px;
     border-bottom: 1px solid #f0f0f0;
@@ -28,7 +28,7 @@
     min-height: 240px;
     display: flex;
     flex-direction: column;
-    border-radius: 20px 20px 0 0; /* Только верхние углы скруглены */
+    border-radius: 20px 20px 0 0;
 }
 
 .add-review-form h3 {
@@ -40,7 +40,7 @@
     font-weight: 600;
 }
 
-/* Сетка для формы */
+
 .review-form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -64,7 +64,7 @@
     height: 100%;
 }
 
-/* Компактные поля ввода */
+
 .compact-input {
     padding: 10px 15px;
     height: 44px;
@@ -111,7 +111,7 @@
     resize: vertical;
 }
 
-/* Звезды */
+
 .add-review-form .stars-group {
     margin-top: 10px;
 }
@@ -143,7 +143,7 @@
     color: #ffd700;
 }
 
-/* Контейнер для кнопки отправки */
+
 .submit-button-container {
     position: absolute;
     bottom: 0;
@@ -151,7 +151,7 @@
     margin-top: 20px;
 }
 
-/* Кнопка отправки в форме */
+
 .submit-button-container .btn-primary {
     padding: 12px 35px;
     font-size: 16px;
@@ -159,11 +159,11 @@
     min-width: 180px;
 }
 
-/* Контейнер со списком отзывов - нижняя часть */
+
 .reviews-container {
     padding: 30px;
     margin-top: 0;
-    border-radius: 0 0 20px 20px; /* Только нижние углы скруглены */
+    border-radius: 0 0 20px 20px;
 }
 
 .reviews-header {
@@ -202,7 +202,7 @@
     outline: none;
 }
 
-/* Список отзывов */
+
 .reviews-list {
     margin-bottom: 25px;
 }
@@ -234,7 +234,7 @@
     gap: 15px;
 }
 
-/* Розовый фон для аватара вместо градиента */
+
 .reviewer-avatar {
     width: 45px;
     height: 45px;
@@ -284,7 +284,7 @@
     border: 2px dashed #e0e0e0;
 }
 
-/* Пагинация */
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -334,115 +334,13 @@
     margin: 0 5px;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-    .add-review-form {
-        padding: 20px;
-        min-height: auto;
-        border-radius: 20px 20px 0 0; /* Сохраняем скругление на мобильных */
-    }
 
-    .review-form-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-        min-height: auto;
-    }
 
-    .form-column-right {
-        height: auto;
-        min-height: 150px;
-    }
-
-    .compact-input {
-        max-width: 100%;
-    }
-
-    .add-review-form .form-group.textarea-group textarea {
-        height: 90px;
-        min-height: 90px;
-        max-height: 110px;
-    }
-
-    .submit-button-container {
-        position: static;
-        margin-top: 20px;
-        text-align: center;
-    }
-
-    .submit-button-container .btn-primary {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .reviews-container {
-        padding: 20px;
-        border-radius: 0 0 20px 20px; /* Сохраняем скругление на мобильных */
-    }
-
-    .reviews-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-
-    .review-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .reviewer-info {
-        width: 100%;
-    }
-
-    .star-rating {
-        justify-content: center;
-    }
-
-    .star {
-        font-size: 26px;
-    }
-
-    .add-review-form h3 {
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .add-review-form h3 {
-        font-size: 20px;
-    }
-
-    .review-item {
-        padding: 15px;
-    }
-
-    .reviewer-avatar {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-
-    .reviews-header h3 {
-        font-size: 18px;
-    }
-
-    .submit-button-container .btn-primary {
-        padding: 12px 20px;
-    }
-
-    .star {
-        font-size: 24px;
-    }
-}
-
-/* Гарантируем, что содержимое не выходит за границы */
 .reviews-unified-container {
-    overflow: hidden; /* Важно для скругления углов */
+    overflow: hidden;
 }
 
-/* Исправляем вертикальное выравнивание для правой колонки */
+
 .form-column-right {
     display: flex;
     flex-direction: column;
@@ -450,12 +348,12 @@
     padding-top: 10px;
 }
 
-/* Обеспечиваем достаточное пространство для звезд и кнопки */
+
 .add-review-form .stars-group {
     margin-bottom: 20px;
 }
 
-/* Корректируем минимальную высоту для десктопов */
+
 @media (min-width: 769px) {
     .add-review-form {
         min-height: 250px;
@@ -466,21 +364,21 @@
     }
 }
 
-/* Исправляем отображение скругленных углов на темном фоне */
 .reviews-unified-container {
     position: relative;
     z-index: 1;
 }
 
-/* Убедимся, что белый фон блока отзывов покрывает весь радиус */
+
 .reviews-unified-container:before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 20px; /* Радиус скругления */
+    height: 20px;
     background: white;
     border-radius: 20px 20px 0 0;
     z-index: -1;
 }
+

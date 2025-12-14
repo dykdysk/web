@@ -24,7 +24,7 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     background-color: white;
     margin: 0 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     flex-shrink: 0;
     position: relative;
 }
@@ -47,24 +47,16 @@
     object-fit: cover;
 }
 
-
-.promotion-item img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
-
 .promotion-content {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 100px 10px 50px; /* Больше padding сверху для градиента */
+    padding: 100px 10px 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 60px;
-
     background: linear-gradient(
             to top,
             rgba(0, 0, 0, 0.2) 0%,
@@ -72,7 +64,6 @@
             rgba(0, 0, 0, 0) 100%
     );
 }
-
 
 .promotion-content p {
     margin: 0;
@@ -82,12 +73,6 @@
     text-align: center;
     font-weight: 500;
     padding: 0 5px;
-}
-
-
-.promotion-content h3 {
-    margin-bottom: 10px;
-    color: #333;
 }
 
 .carousel-btn {
@@ -119,7 +104,6 @@
     right: 15px;
 }
 
-
 .boxes {
     padding: 100px 0;
 }
@@ -136,7 +120,7 @@
     border-radius: 15px;
     padding: 20px;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 420px;
     display: flex;
     flex-direction: column;
@@ -163,7 +147,6 @@
 
 .box-description {
     color: #666;
-    margin-bottom: 20px;
     line-height: 1.5;
     flex-grow: 1;
 }
@@ -188,8 +171,8 @@
 .catalog-tabs {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
     border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
 }
 
 .catalog-tab {
@@ -226,7 +209,7 @@
     padding: 15px;
     text-align: center;
     background-color: white;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 350px;
     display: flex;
     flex-direction: column;
@@ -242,7 +225,7 @@
     height: 150px;
     object-fit: cover;
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .item-title {
