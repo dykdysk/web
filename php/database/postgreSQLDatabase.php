@@ -1,5 +1,5 @@
 <?php
-class Database {
+class PostgreSQL {
     private $host = "localhost";
     private $dbname = "donutshop";
     private $user = "root";

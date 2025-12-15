@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/vendor/autoload.php';
 require_once 'controllers/donutController.php';
 require_once 'services/donutService.php';
 require_once 'repositories/donutRepository.php';
@@ -11,7 +12,12 @@ require_once 'controllers/boxController.php';
 require_once 'services/boxService.php';
 require_once 'repositories/boxRepository.php';
 require_once 'models/box.php';
-require_once 'database/database.php';
+require_once 'controllers/reviewController.php';
+require_once 'services/reviewService.php';
+require_once 'repositories/reviewRepository.php';
+require_once 'models/review.php';
+require_once 'database/postgreSQLDatabase.php';
+require_once 'database/mongoDatabase.php';
 
 header('Content-Type: application/json');
 
@@ -19,8 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit(0);
 }
 
-$database = new Database();
-$db = $database->getConnection();
+$pg_database = new PostgreSQL();
+$pg_db = $pg_database->getConnection();
+
+$mongo_database = new MongoDB();
+$mongo_db = $mongo_database->getConnection();
 
 $requestUri = $_SERVER['REQUEST_URI'];
 $requestMethod = $_SERVER['REQUEST_METHOD'];
@@ -35,21 +44,27 @@ $param2 = $paths[2] ?? '';
 
 switch($entity) {
     case 'donuts':
-        $repository = new DonutRepository($db);
+        $repository = new DonutRepository($pg_db);
         $service = new DonutService($repository);
         $controller = new DonutController($service);
         break;
 
     case 'promotions':
-        $repository = new PromotionRepository($db);
+        $repository = new PromotionRepository($pg_db);
         $service = new PromotionService($repository);
         $controller = new PromotionController($service);
         break;
 
     case 'boxes':
-        $repository = new BoxRepository($db);
+        $repository = new BoxRepository($pg_db);
         $service = new BoxService($repository);
         $controller = new BoxController($service);
+        break;
+
+    case 'reviews':
+        $repository = new ReviewRepository($mongo_db);
+        $service = new ReviewService($repository);
+        $controller = new ReviewController($service);
         break;
 
     default:
@@ -64,7 +79,7 @@ switch($requestMethod) {
         break;
 
     case 'POST':
-        handlePostRequest($entity);
+        handlePostRequest($entity, $controller);
         break;
 }
 
@@ -74,7 +89,7 @@ function handleGetRequest($entity, $controller, $param1, $param2) {
             if (empty($param1)) {
                 $controller->getAllDonuts();
             } else if ($param1 === 'id' && $param2) {
-                $controller->getDonutById($param1);
+                $controller->getDonutById($param2);
             } else if ($param1 === 'name' && $param2) {
                 $controller->getDonutsByName($param2);
             } else if ($param1 === 'category' && $param2) {
@@ -108,19 +123,25 @@ function handleGetRequest($entity, $controller, $param1, $param2) {
                 $controller->getBoxesByPrice($param2);
             }
             break;
+
+        case 'reviews':
+            if (empty($param1)) {
+                $controller->getAllReviews();
+            } else if ($param1 === 'name' && $param2) {
+                $controller->getReviewsByName($param2);
+            } else if ($param1 === 'rating' && $param2) {
+                $controller->getReviewsByRating($param2);
+            } else if ($param1 === 'date' && $param2) {
+                $controller->getReviewsByDate($param2);
+            }
+            break;
     }
 }
 
-function handlePostRequest($entity) {
+function handlePostRequest($entity, $controller) {
     switch($entity) {
-        case 'donuts':
-            echo "donuts";
-            break;
-        case 'promotions':
-            echo "promotions";
-            break;
-        case 'boxes':
-            echo "boxes";
+        case 'reviews':
+            $controller->createReview();
             break;
     }
 }
