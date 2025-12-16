@@ -16,6 +16,15 @@ require_once 'controllers/reviewController.php';
 require_once 'services/reviewService.php';
 require_once 'repositories/reviewRepository.php';
 require_once 'models/review.php';
+require_once 'controllers/orderController.php';
+require_once 'services/orderService.php';
+require_once 'services/emailService.php';
+require_once 'repositories/orderRepository.php';
+require_once 'models/order.php';
+require_once 'models/orderInformation.php';
+require_once 'models/personInformation.php';
+require_once 'models/donutDTO.php';
+require_once 'models/boxDTO.php';
 require_once 'database/postgreSQLDatabase.php';
 require_once 'database/mongoDatabase.php';
 
@@ -65,6 +74,12 @@ switch($entity) {
         $repository = new ReviewRepository($mongo_db);
         $service = new ReviewService($repository);
         $controller = new ReviewController($service);
+        break;
+
+    case 'orders':
+        $repository = new OrderRepository($mongo_db);
+        $service = new OrderService($repository);
+        $controller = new OrderController($service);
         break;
 
     default:
@@ -142,6 +157,10 @@ function handlePostRequest($entity, $controller) {
     switch($entity) {
         case 'reviews':
             $controller->createReview();
+            break;
+
+        case 'orders':
+            $controller->createOrder();
             break;
     }
 }
