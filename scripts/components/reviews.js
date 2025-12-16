@@ -23,7 +23,7 @@ const DonutsReviews = {
         document.querySelectorAll('.star').forEach(star => {
             star.addEventListener('click', (e) => {
                 this.setRating(parseInt(star.dataset.value));
-                this.hideRatingError(); // Скрываем ошибку при клике на звезду
+                this.hideRatingError();
             });
             star.addEventListener('mouseover', () => this.previewRating(parseInt(star.dataset.value)));
         });

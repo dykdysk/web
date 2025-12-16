@@ -1,9 +1,6 @@
 const DonutsHamburger = {
     init() {
-        if (this.isCheckoutPage()) {
-            return;
-        }
-
+        if (this.isCheckoutPage()) return;
         this.createHamburgerMenu();
         this.createMobileMenu();
         this.setupHamburgerEvents();
@@ -12,8 +9,7 @@ const DonutsHamburger = {
 
     isCheckoutPage() {
         return window.location.pathname.includes('checkout') ||
-            document.querySelector('.checkout-steps') !== null ||
-            document.querySelector('.checkout-main') !== null;
+            document.querySelector('.checkout-steps') !== null;
     },
 
     createHamburgerMenu() {
@@ -26,12 +22,7 @@ const DonutsHamburger = {
             hamburgerBtn = document.createElement('button');
             hamburgerBtn.className = 'hamburger';
             hamburgerBtn.setAttribute('aria-label', 'Меню');
-            hamburgerBtn.innerHTML = `
-                <span></span>
-                <span></span>
-                <span></span>
-            `;
-
+            hamburgerBtn.innerHTML = '<span></span><span></span><span></span>';
             headerContent.insertBefore(hamburgerBtn, headerContent.firstChild);
         }
     },
@@ -99,11 +90,9 @@ const DonutsHamburger = {
             if (!cartCount) return;
 
             const count = cartCount.textContent;
-            if (window.innerWidth <= 480) {
-                cartButton.innerHTML = `<span class="cart-count">${count}</span>`;
-            } else {
-                cartButton.innerHTML = `Корзина <span class="cart-count">${count}</span>`;
-            }
+            cartButton.innerHTML = window.innerWidth <= 480
+                ? `<span class="cart-count">${count}</span>`
+                : `Корзина <span class="cart-count">${count}</span>`;
         };
 
         updateCartButtonText();

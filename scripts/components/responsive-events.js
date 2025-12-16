@@ -1,15 +1,11 @@
 const DonutsResponsive = {
     init() {
-        if (this.isCheckoutPage()) {
-            this.setupResizeHandler();
-            return;
-        }
-
         this.setupResizeHandler();
-        this.setupTouchEvents();
-        this.preventZoomOnDoubleTap();
-        this.setupHamburgerOnResize();
-        this.setupCartButtonResponsive();
+        if (!this.isCheckoutPage()) {
+            this.setupTouchEvents();
+            this.setupHamburgerOnResize();
+            this.setupCartButtonResponsive();
+        }
     },
 
     isCheckoutPage() {
@@ -18,13 +14,9 @@ const DonutsResponsive = {
     },
 
     setupHamburgerOnResize() {
-        if (this.isCheckoutPage()) return;
-
         window.addEventListener('resize', () => {
             if (window.DonutsHamburger && window.DonutsHamburger.init) {
-                setTimeout(() => {
-                    window.DonutsHamburger.init();
-                }, 100);
+                setTimeout(() => window.DonutsHamburger.init(), 100);
             }
         });
     },
@@ -75,16 +67,11 @@ const DonutsResponsive = {
         this.toggleHamburgerVisibility();
     },
 
-
     toggleHamburgerVisibility() {
         const hamburger = document.querySelector('.hamburger');
         if (!hamburger) return;
 
-        if (window.innerWidth <= 768) {
-            hamburger.style.display = 'flex';
-        } else {
-            hamburger.style.display = 'none';
-        }
+        hamburger.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
     },
 
     setupTouchEvents() {
@@ -97,22 +84,9 @@ const DonutsResponsive = {
                 });
 
                 button.addEventListener('touchend', function() {
-                    setTimeout(() => {
-                        this.classList.remove('touch-active');
-                    }, 150);
+                    setTimeout(() => this.classList.remove('touch-active'), 150);
                 });
             });
         }
-    },
-
-    preventZoomOnDoubleTap() {
-        let lastTouchEnd = 0;
-        document.addEventListener('touchend', function(event) {
-            const now = (new Date()).getTime();
-            if (now - lastTouchEnd <= 300) {
-                event.preventDefault();
-            }
-            lastTouchEnd = now;
-        }, false);
     }
 };

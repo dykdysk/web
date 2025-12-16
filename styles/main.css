@@ -1,23 +1,37 @@
-@import url('../styles/base/reset.css');
-@import url('../styles/base/animations.css');
-@import url('../styles/base/variables.css');
+@import url('base/reset.css');
+@import url('base/variables.css');
+@import url('base/animations.css');
 
-@import url('../styles/components/buttons.css');
-@import url('../styles/components/cart.css');
-@import url('../styles/components/modal.css');
+@import url('layout/header.css');
+@import url('layout/hero.css');
+@import url('layout/sections.css');
+@import url('layout/reviews.css');
+@import url('layout/footer.css');
 
+@import url('components/buttons.css');
+@import url('components/cart.css');
+@import url('components/modal.css');
 
-@import url('../styles/layout/header.css');
-@import url('../styles/layout/footer.css');
-@import url('../styles/layout/hero.css');
-@import url('../styles/layout/sections.css');
-@import url('../styles/layout/reviews.css');
+@import url('pages/about.css');
+@import url('pages/checkout.css');
 
-@import url('../styles/pages/about.css');
-@import url('../styles/pages/checkout.css');
+@import url('components/responsive.css');
 
-@import url('../styles/components/responsive.css');
+/* Общие стили */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
+.section-title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+/* Badges */
 .new-badge {
     background: linear-gradient(135deg, #FFD700, #FFA500);
     color: #fff;
@@ -30,7 +44,6 @@
     box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
     display: inline-block;
 }
-
 
 .catalog-tab {
     position: relative;
@@ -45,47 +58,19 @@
     transform: rotate(7deg);
     font-size: 10px;
     padding: 3px 8px;
-    margin-left: 0;
 }
 
-
-.catalog-item {
-    position: relative;
-}
-
-.catalog-item .new-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 2;
-}
-
-
+.catalog-item,
 .box-catalog-item {
     position: relative;
 }
 
+.catalog-item .new-badge,
 .box-catalog-item .new-badge {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 12px;
+    right: 12px;
     z-index: 2;
-    font-size: 10px;
-    padding: 3px 8px;
-}
-
-
-.compact-tabs .catalog-tab {
-    position: relative;
-}
-
-.compact-tabs .catalog-tab .new-badge {
-    position: absolute;
-    top: -9px;
-    right: -20px;
-    transform: rotate(7deg);
-    font-size: 9px;
-    padding: 2px 6px;
 }
 
 @keyframes pulse {
@@ -103,82 +88,37 @@
     }
 }
 
-
-.catalog-item .new-badge,
-.box-catalog-item .new-badge {
-    animation: pulse-straight 2s infinite;
+/* Form Styles */
+.form-group {
+    margin-bottom: 25px;
 }
 
-@keyframes pulse-straight {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
-    }
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
 }
 
-.empty-state {
-    text-align: center;
-    padding: 40px;
-    color: #666;
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    font-family: inherit;
 }
 
-.empty-state-icon {
-    font-size: 48px;
-    margin-bottom: 20px;
-    opacity: 0.5;
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #FF7E93;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 126, 147, 0.1);
 }
-
-
-.promotion-item,
-.catalog-item,
-.box-item {
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.promotion-item:hover,
-.catalog-item:hover,
-.box-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
-
-.feature-card .card-inner {
-    transition: transform 0.8s ease;
-}
-
-.promotions-track {
-    transition: transform 0.5s ease;
-}
-
-
-@media (max-width: 768px) {
-    .promotion-item {
-        transition: transform 0.5s ease, box-shadow 0.5s ease !important;
-    }
-
-    .promotion-item:hover {
-        transform: translateY(-5px) !important;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
-    }
-}
-
-
-@media (max-width: 768px) {
-    .catalog-item {
-        transition: transform 0.5s ease, box-shadow 0.5s ease !important;
-    }
-
-    .catalog-item:hover {
-        transform: translateY(-5px) !important;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
-    }
-}
-

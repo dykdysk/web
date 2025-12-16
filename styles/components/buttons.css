@@ -11,17 +11,6 @@
     white-space: nowrap;
 }
 
-.btn-login {
-    padding: 4px 15px;
-    background-color: #dddddd;
-    color: #323030;
-    margin-right: 10px;
-}
-
-.btn-login:hover {
-    background-color: #c3c3c3;
-}
-
 .btn-cart {
     background-color: #FF7E93;
     color: white;
@@ -29,10 +18,6 @@
 
 .btn-cart:hover {
     background-color: #e67285;
-}
-
-.cart-count {
-    margin-left: 5px;
 }
 
 .btn-catalog {
@@ -47,19 +32,12 @@
     background-color: #edcb73;
 }
 
-.btn-assemble {
+.btn-assemble,
+.btn-add-to-cart {
     background-color: #ffd700;
     color: #333;
     padding: 8px 15px;
     font-weight: bold;
-}
-
-.btn-add-to-cart {
-    background-color: #ffd700;
-    color: #333;
-    padding: 6px 12px;
-    font-weight: bold;
-    font-size: 14px;
 }
 
 .btn-primary {
@@ -92,8 +70,6 @@
     font-size: 14px;
     font-weight: 600;
     transition: all 0.3s;
-    text-decoration: none;
-    display: inline-block;
 }
 
 .btn-edit-order:hover {
@@ -119,7 +95,6 @@
     cursor: pointer;
     font-size: 12px;
     font-weight: 600;
-    transition: background-color 0.3s;
 }
 
 .btn-remove-box {
@@ -131,7 +106,6 @@
     cursor: pointer;
     font-size: 12px;
     font-weight: 600;
-    transition: background-color 0.3s;
 }
 
 .btn-edit-box:hover {
@@ -140,53 +114,4 @@
 
 .btn-remove-box:hover {
     background-color: #e55a5a;
-}
-
-.btn-add-to-box {
-    background-color: #ffd700;
-    color: #333;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.btn-add-to-box:disabled {
-    background-color: #e0e0e0;
-    cursor: not-allowed;
-}
-
-.btn-next, .btn-add-to-cart-final {
-    background-color: #ffd700;
-    color: #333;
-    padding: 12px 30px;
-    font-weight: bold;
-}
-
-.btn-back {
-    background-color: #e0e0e0;
-    color: #333;
-    padding: 12px 30px;
-    font-weight: bold;
-}
-
-.btn-next:hover, .btn-add-to-cart-final:hover {
-    background-color: #edcb73;
-}
-
-.btn-back:hover {
-    background-color: #d0d0d0;
-}
-
-.btn-secondary {
-    background-color: #f0f0f0;
-    color: #333;
-    padding: 12px 30px;
-    font-weight: bold;
-}
-
-.btn-secondary:hover {
-    background-color: #e0e0e0;
 }
