@@ -1,39 +1,53 @@
 const DonutsUtils = {
     showNotification(message, type = 'success') {
+        // Проверяем, есть ли уже уведомление
+        const existingNotification = document.querySelector('.donuts-notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+
         const notification = document.createElement('div');
-        const bgColor = type === 'success' ? '#ed6f83' : '#959595';
+        notification.className = 'donuts-notification';
+
+        const bgColor = type === 'success' ? '#FF7E93' : '#ff6b6b';
+        const textColor = 'white';
 
         notification.style.cssText = `
             position: fixed;
             top: 20px;
             right: 20px;
             background: ${bgColor};
-            color: white;
-            padding: 15px 20px;
-            border-radius: 5px;
-            z-index: 10000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            animation: slideIn 0.3s ease;
+            color: ${textColor};
+            padding: 15px 25px;
+            border-radius: 8px;
+            z-index: 9999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: notificationSlideIn 0.3s ease-out;
+            font-weight: 500;
+            max-width: 300px;
+            word-wrap: break-word;
         `;
+
         notification.textContent = message;
         document.body.appendChild(notification);
 
+        // Удаляем уведомление через 3 секунды
         setTimeout(() => {
-            notification.remove();
+            notification.style.animation = 'notificationSlideOut 0.3s ease-out';
+            setTimeout(() => notification.remove(), 300);
         }, 3000);
     },
 
     initSmoothScroll() {
-        const navLinks = document.querySelectorAll('nav a[href^="#"]');
-
-        navLinks.forEach(link => {
+        document.querySelectorAll('nav a[href^="#"]').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+                if (targetId === '#') return;
 
+                const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    const offsetTop = targetElement.offsetTop - 80;
+                    const offsetTop = targetElement.offsetTop - 100;
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
@@ -43,56 +57,76 @@ const DonutsUtils = {
         });
     },
 
-    initScrollAnimations() {
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        fadeElements.forEach(element => {
-            observer.observe(element);
-        });
-    },
-
     safeJSONParse(str, fallback = []) {
         try {
-            return JSON.parse(str) || fallback;
+            if (!str) return fallback;
+            const parsed = JSON.parse(str);
+            return Array.isArray(parsed) ? parsed : fallback;
         } catch (error) {
+            console.error('JSON parse error:', error);
             return fallback;
         }
     },
 
     formatPrice(price) {
-        return `${parseFloat(price).toFixed(2)} BYN`;
+        const numPrice = parseFloat(price);
+        return isNaN(numPrice) ? '0.00 BYN' : `${numPrice.toFixed(2)} BYN`;
+    },
+
+    // Новый метод для безопасного выполнения кода
+    safeEvalCheck() {
+        // Проверяем, доступен ли eval (для CSP)
+        try {
+            if (typeof eval === 'function') {
+                return true;
+            }
+        } catch (e) {
+            console.warn('eval is blocked by CSP');
+            return false;
+        }
+        return false;
     }
 };
 
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
+// Добавляем стили для анимаций безопасным способом (без eval)
+document.addEventListener('DOMContentLoaded', function() {
+    if (!document.querySelector('#donuts-utils-styles')) {
+        const style = document.createElement('style');
+        style.id = 'donuts-utils-styles';
+        style.textContent = `
+            @keyframes notificationSlideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes notificationSlideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+            
+            .fade-in {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.5s ease, transform 0.5s ease;
+            }
+            
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        `;
+        document.head.appendChild(style);
     }
-    
-    .fade-in {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-`;
-document.head.appendChild(style);
+});

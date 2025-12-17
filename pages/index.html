@@ -2,18 +2,22 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Donuts</title>
-    <link rel="stylesheet" href="../styles/common.css">
-    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
 
 <header>
     <div class="container">
         <div class="header-content">
+            <button class="hamburger" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="logo-section">
-                <div class="logo"></div>
+                <img src="../images/logo.png" alt="Donuts Shop" class="logo">
                 <div class="company-name">Donuts</div>
             </div>
             <nav>
@@ -26,7 +30,6 @@
                 </ul>
             </nav>
             <div class="header-buttons">
-                <a href="authentication.html" class="btn btn-login">Войти</a>
                 <button class="btn btn-cart" id="cart-button">
                     Корзина <span class="cart-count">0</span>
                 </button>
@@ -47,7 +50,7 @@
             <a href="#catalog" class="btn btn-catalog">Каталог</a>
         </div>
         <div class="hero-image">
-            <img src="../images/img.png" alt="Вкусные пончики">
+            <img src="../images/hero-donuts.png" alt="Вкусные пончики">
         </div>
     </div>
 </section>
@@ -56,10 +59,9 @@
     <div class="container">
         <h2 class="section-title">Лучшие акции</h2>
         <div class="promotions-container">
-            <div class="promotions-track" id="promotions-track">
-            </div>
-            <div class="promotion-nav" id="promotion-nav">
-            </div>
+            <div class="promotions-track" id="promotions-track"></div>
+            <button class="carousel-btn prev-btn">‹</button>
+            <button class="carousel-btn next-btn">›</button>
         </div>
     </div>
 </section>
@@ -118,6 +120,10 @@
                         <div class="catalog-tab" data-category="powdered">Напудренные</div>
                         <div class="catalog-tab" data-category="with-sprinkles">С посыпкой</div>
                         <div class="catalog-tab" data-category="filled">С начинкой</div>
+                        <div class="catalog-tab" data-category="new-year">
+                            Новогодние
+                            <span class="new-badge">Новинка</span>
+                        </div>
                     </div>
 
                     <div class="box-catalog-items" id="box-catalog-items">
@@ -156,6 +162,10 @@
             <div class="catalog-tab" data-category="powdered">Напудренные</div>
             <div class="catalog-tab" data-category="with-sprinkles">С посыпкой</div>
             <div class="catalog-tab" data-category="filled">С начинкой</div>
+            <div class="catalog-tab" data-category="new-year">
+                Новогодние
+                <span class="new-badge">Новинка</span>
+            </div>
         </div>
         <div class="catalog-items">
         </div>
@@ -176,13 +186,18 @@
             <span>Итого:</span>
             <span id="cart-total">0 BYN</span>
         </div>
-        <button class="btn btn-checkout" id="checkout-button">Оформить заказ</button>
+        <div class="cart-actions">
+            <button class="btn-clear-cart" id="clear-cart-button" title="Очистить корзину">
+                <div class="icon"></div>
+            </button>
+            <button class="btn btn-checkout" id="checkout-button">Оформить заказ</button>
+        </div>
     </div>
 </div>
 
-<footer>
+<footer id="contacts">
     <div class="container">
-        <div class="footer-content" id="contacts">
+        <div class="footer-content">
             <div class="footer-section">
                 <h3>О нас</h3>
                 <p>Мы готовим самые вкусные пончики по оригинальной технологии из натуральных ингредиентов.</p>
@@ -208,8 +223,15 @@
 <script src="../scripts/core/data.js"></script>
 <script src="../scripts/core/utils.js"></script>
 <script src="../scripts/core/cart.js"></script>
+<script src="../scripts/components/hamburger.js"></script>
+<script src="../scripts/components/responsive-events.js"></script>
 <script src="../scripts/components/promotions.js"></script>
 <script src="../scripts/components/box-builder.js"></script>
 <script src="../scripts/pages/index.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        DonutsResponsive.init();
+    });
+</script>
 </body>
 </html>

@@ -2,8 +2,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     DonutsCart.init();
     DonutsUtils.initSmoothScroll();
+    DonutsReviews.init();
+    DonutsHamburger.init();
+    setupCartEditHandlers();
+    setupFeatureCardHover();
+    setupFeatureCardClick();
 });
-
 
 function setupCartEditHandlers() {
     document.addEventListener('click', function(e) {
@@ -32,3 +36,5 @@ function initScrollAnimations() {
         observer.observe(card);
     });
 }
+
+

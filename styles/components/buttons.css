@@ -1,0 +1,117 @@
+.btn {
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.btn-cart {
+    background-color: #FF7E93;
+    color: white;
+}
+
+.btn-cart:hover {
+    background-color: #e67285;
+}
+
+.btn-catalog {
+    background-color: #ffdc81;
+    color: #323030;
+    padding: 12px 50px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.btn-catalog:hover {
+    background-color: #edcb73;
+}
+
+.btn-assemble,
+.btn-add-to-cart {
+    background-color: #ffdc81;
+    color: #333;
+    padding: 8px 15px;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #FF7E93;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #e67285;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 126, 147, 0.3);
+}
+
+.btn-edit-order {
+    background-color: #ffdc81;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-edit-order:hover {
+    background-color: #edcb73;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.btn-checkout {
+    background-color: #FF7E93;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    font-weight: bold;
+}
+
+.btn-edit-box {
+    background-color: #ffdc81;
+    color: #333;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.btn-remove-box {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.btn-edit-box:hover {
+    background-color: #edcb73;
+}
+
+.btn-remove-box:hover {
+    background-color: #e55a5a;
+}

@@ -3,7 +3,23 @@ document.addEventListener('DOMContentLoaded', function() {
     setupFormHandler();
     setupDeliveryToggle();
     enhanceSelectStyles();
+    fixCheckoutHeader();
 });
+
+function fixCheckoutHeader() {
+    const headerContent = document.querySelector('.header-content');
+    const logoSection = document.querySelector('.logo-section');
+    const checkoutSteps = document.querySelector('.checkout-steps');
+
+    if (headerContent && logoSection && checkoutSteps) {
+        headerContent.style.justifyContent = 'space-between';
+        logoSection.style.position = 'relative';
+        logoSection.style.left = '0';
+        logoSection.style.transform = 'none';
+        checkoutSteps.style.margin = '0 auto';
+        checkoutSteps.style.flexGrow = '1';
+    }
+}
 
 function loadOrderSummary() {
     const orderItemsContainer = document.getElementById('order-items');
@@ -210,7 +226,6 @@ function setupFormHandler() {
 
         const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
 
-        //здесь была бы отправка данных на сервер но...пока так
         const formData = {
             customer: {
                 name: document.getElementById('name').value,

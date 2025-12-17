@@ -1,4 +1,4 @@
-/* шаги оформления заказа */
+
 .checkout-steps {
     display: flex;
     align-items: center;
@@ -64,7 +64,6 @@
     top: -10px;
 }
 
-
 .step.completed + .step-connector {
     background-color: #333;
 }
@@ -78,7 +77,7 @@
             transparent 8px
     );
 }
-/* Основной контент страницы */
+
 .checkout-main {
     padding: 40px 0 60px 0;
     min-height: 60vh;
@@ -106,7 +105,7 @@
     background: white;
 }
 
-/* формы */
+
 .checkout-form-section {
     padding: 0 40px 30px 40px;
 }
@@ -164,8 +163,6 @@
 }
 
 
-
-/* Стили для опций доставки и оплаты */
 .delivery-options, .payment-options {
     display: flex;
     gap: 15px;
@@ -205,7 +202,6 @@
     transition: all 0.3s;
 }
 
-/* Стиль для выбранного варианта  */
 
 .option-label.selected {
     border-color: #FF7E93;
@@ -217,11 +213,6 @@
     color: #FF7E93;
     font-weight: 600;
 }
-
-
-
-/* Кнопка подтверждения */
-
 
 
 .btn-primary {
@@ -236,7 +227,6 @@
     width: 100%;
     transition: all 0.3s;
     margin-top: 10px;
-
 }
 
 .btn-primary:hover {
@@ -245,14 +235,14 @@
     box-shadow: 0 4px 12px rgba(255, 126, 147, 0.3);
 }
 
-/* Разделительная полоска */
+
 .order-divider {
     height: 1px;
     background-color: #e0e0e0;
     margin: 0 40px;
 }
 
-/* Секция с заказом */
+
 .order-summary-section {
     padding: 30px 40px 40px 40px;
 }
@@ -274,7 +264,7 @@
 }
 
 .btn-edit-order {
-    background-color: #ffd700;
+    background-color: #ffdc81;
     color: #333;
     border: none;
     padding: 10px 20px;
@@ -293,7 +283,7 @@
     box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
 
-/* Сетка товаров */
+
 .order-items-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -301,7 +291,7 @@
     margin-bottom: 25px;
 }
 
-/* Стили для товаров в заказе */
+
 .order-item {
     display: flex;
     align-items: center;
@@ -348,7 +338,7 @@
     color: #888;
 }
 
-/* Стили для боксов в заказе */
+
 .order-box-item {
     grid-column: 1 / -1;
     border: 1px solid #e0e0e0;
@@ -379,14 +369,13 @@
 .box-name {
     font-weight: 600;
     font-size: 16px;
-    margin-bottom: 5px;
+
     color: #333;
 }
 
 .box-price {
     color: #666;
     font-size: 14px;
-    margin-bottom: 8px;
 }
 
 .box-options {
@@ -435,7 +424,7 @@
     flex-shrink: 0;
 }
 
-/* Итоговая стоимость */
+
 .order-total {
     text-align: left;
     margin-top: 25px;

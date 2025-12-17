@@ -1,0 +1,116 @@
+@import url('base/reset.css');
+@import url('base/variables.css');
+@import url('base/animations.css');
+
+@import url('layout/header.css');
+@import url('layout/hero.css');
+@import url('layout/sections.css');
+@import url('layout/reviews.css');
+@import url('layout/footer.css');
+
+@import url('components/buttons.css');
+@import url('components/cart.css');
+@import url('components/modal.css');
+
+@import url('pages/about.css');
+@import url('pages/checkout.css');
+
+@import url('components/responsive.css');
+
+
+.section-title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.new-badge {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    animation: pulse 2s infinite;
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    display: inline-block;
+}
+
+.catalog-tab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.catalog-tab .new-badge {
+    position: absolute;
+    top: -8px;
+    right: -15px;
+    transform: rotate(7deg);
+    padding: 3px 8px;
+}
+
+.catalog-item,
+.box-catalog-item {
+    position: relative;
+}
+
+.catalog-item .new-badge,
+.box-catalog-item .new-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+}
+
+@keyframes pulse {
+    0% {
+        transform: rotate(7deg) scale(1);
+        box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+        transform: rotate(7deg) scale(1.05);
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
+    }
+    100% {
+        transform: rotate(7deg) scale(1);
+        box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    }
+}
+
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #FF7E93;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 126, 147, 0.1);
+}

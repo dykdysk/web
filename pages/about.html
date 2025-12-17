@@ -2,18 +2,22 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Donuts</title>
-    <link rel="stylesheet" href="../styles/common.css">
-    <link rel="stylesheet" href="../styles/about.css">
+    <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
 
 <header>
     <div class="container">
         <div class="header-content">
+            <button class="hamburger" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="logo-section">
-                <div class="logo"></div>
+                <img src="../images/logo.png" alt="Donuts Shop" class="logo">
                 <div class="company-name">Donuts</div>
             </div>
             <nav>
@@ -21,11 +25,11 @@
                     <li><a href="index.html">Главная</a></li>
                     <li><a href="#why-us">Почему мы?</a></li>
                     <li><a href="#location">Местоположение</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
                     <li><a href="#contacts">Контакты</a></li>
                 </ul>
             </nav>
             <div class="header-buttons">
-                <a href="authentication.html" class="btn btn-login">Войти</a>
                 <button class="btn btn-cart" id="cart-button">
                     Корзина <span class="cart-count">0</span>
                 </button>
@@ -116,7 +120,7 @@
                     <div class="address-item">
                         <h4>Центральная кофейня</h4>
                         <p>г. Гродно, ул. Советская, 15</p>
-                        <p> +375 (29) 123-45-67</p>
+                        <p>+375 (29) 123-45-67</p>
                         <p>Пн-Вс: 8:00 - 23:00</p>
                         <a href="https://maps.google.com/?q=Гродно,ул.Советская,15" target="_blank" class="map-link">Открыть в Google Maps</a>
                     </div>
@@ -127,6 +131,76 @@
                         <p>Пн-Вс: 9:00 - 22:00</p>
                         <a href="https://maps.google.com/?q=Гродно,ул.Замковая,7" target="_blank" class="map-link">Открыть в Google Maps</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reviews-section" id="reviews">
+    <div class="container">
+        <h2 class="section-title">Отзывы наших клиентов</h2>
+
+        <div class="reviews-unified-container">
+            <div class="add-review-form">
+                <h3>Оставить отзыв</h3>
+                <form id="review-form">
+                    <div class="review-form-grid">
+                        <div class="form-column-left">
+                            <div class="form-group">
+                                <label for="review-name">Ваше имя (необязательно)</label>
+                                <input type="text" id="review-name" placeholder="Аноним" class="compact-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="review-text">Ваш отзыв *</label>
+                                <textarea id="review-text" rows="3" required
+                                          placeholder="Поделитесь вашим мнением о наших пончиках..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-column-right">
+                            <div class="form-group">
+                                <label>Ваша оценка</label>
+                                <div class="star-rating">
+                                    <span class="star" data-value="1">★</span>
+                                    <span class="star" data-value="2">★</span>
+                                    <span class="star" data-value="3">★</span>
+                                    <span class="star" data-value="4">★</span>
+                                    <span class="star" data-value="5">★</span>
+                                    <input type="hidden" id="review-rating" value="0">
+                                </div>
+                                <div class="rating-error" id="rating-error" style="display: none; color: #ff6b6b; font-size: 13px; margin-top: 5px;">
+                                    Пожалуйста, поставьте оценку
+                                </div>
+                            </div>
+
+                            <div class="submit-button-container">
+                                <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="reviews-container">
+                <div class="reviews-header">
+                    <h3>Все отзывы (<span id="total-reviews">0</span>)</h3>
+                    <div class="reviews-sort">
+                        <select id="reviews-sort">
+                            <option value="newest">Сначала новые</option>
+                            <option value="oldest">Сначала старые</option>
+                            <option value="highest">Сначала с высокой оценкой</option>
+                            <option value="lowest">Сначала с низкой оценкой</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="reviews-list" id="reviews-list">
+                </div>
+
+                <div class="pagination" id="reviews-pagination">
                 </div>
             </div>
         </div>
@@ -147,13 +221,18 @@
             <span>Итого:</span>
             <span id="cart-total">0 BYN</span>
         </div>
-        <button class="btn btn-checkout" id="checkout-button">Оформить заказ</button>
+        <div class="cart-actions">
+            <button class="btn-clear-cart" id="clear-cart-button" title="Очистить корзину">
+                <div class="icon"></div>
+            </button>
+            <button class="btn btn-checkout" id="checkout-button">Оформить заказ</button>
+        </div>
     </div>
 </div>
 
-<footer>
+<footer id="contacts">
     <div class="container">
-        <div class="footer-content" id="contacts">
+        <div class="footer-content">
             <div class="footer-section">
                 <h3>О нас</h3>
                 <p>Мы готовим самые вкусные пончики по оригинальной американской технологии из натуральных ингредиентов.</p>
@@ -179,6 +258,14 @@
 <script src="../scripts/core/data.js"></script>
 <script src="../scripts/core/utils.js"></script>
 <script src="../scripts/core/cart.js"></script>
+<script src="../scripts/components/hamburger.js"></script>
+<script src="../scripts/components/responsive-events.js"></script>
+<script src="../scripts/components/reviews.js"></script>
 <script src="../scripts/pages/about.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        DonutsResponsive.init();
+    });
+</script>
 </body>
 </html>

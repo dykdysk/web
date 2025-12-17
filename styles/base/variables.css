@@ -1,0 +1,104 @@
+
+:root {
+    /* Основные цвета */
+    --color-primary: #FF7E93;
+    --color-primary-hover: #e67285;
+    --color-secondary: #ffdc81;
+    --color-secondary-hover: #edcb73;
+    --color-accent: #CD5C5C;
+
+    /* Текст */
+    --text-dark: #333;
+    --text-medium: #666;
+    --text-light: #999;
+    --text-white: #fff;
+
+    /* Фоны */
+    --bg-white: #fff;
+    --bg-light: #f9f9f9;
+    --bg-lighter: #fafafa;
+    --bg-gray: #f0f0f0;
+    --bg-dark: #333;
+
+    /* Границы */
+    --border-light: #e0e0e0;
+    --border-medium: #ddd;
+    --border-dark: #444;
+
+    /* Тени */
+    --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+    --shadow-medium: 0 4px 15px rgba(0,0,0,0.1);
+    --shadow-heavy: 0 10px 30px rgba(0,0,0,0.1);
+    --shadow-primary: 0 4px 12px rgba(255, 126, 147, 0.3);
+
+    /* Радиусы */
+    --radius-small: 5px;
+    --radius-medium: 10px;
+    --radius-large: 15px;
+    --radius-xl: 25px;
+    --radius-circle: 50%;
+
+    /* Отступы */
+    --padding-xs: 5px;
+    --padding-sm: 10px;
+    --padding-md: 15px;
+    --padding-lg: 20px;
+    --padding-xl: 25px;
+    --padding-xxl: 30px;
+    --padding-section: 60px;
+
+    /* Размеры шрифтов */
+    --font-xs: 10px;
+    --font-sm: 12px;
+    --font-base: 14px;
+    --font-md: 16px;
+    --font-lg: 18px;
+    --font-xl: 20px;
+    --font-xxl: 22px;
+    --font-xxxl: 24px;
+    --font-hero: 32px;
+    --font-giant: 36px;
+    --font-mega: 48px;
+    --font-super: 100px;
+
+    /* Размеры элементов */
+    --header-height: 70px;
+    --cart-width: 33.33%;
+    --logo-size: 45px;
+    --icon-size: 50px;
+    --button-height: 40px;
+
+    /* Анимации */
+    --transition-fast: 0.3s;
+    --transition-normal: 0.5s;
+    --transition-slow: 0.8s;
+    --easing: ease;
+
+    /* Z-index уровни */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal: 1040;
+    --z-popover: 1050;
+    --z-tooltip: 1060;
+    --z-notification: 1070;
+
+    /* Градиенты */
+    --gradient-hero: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+
+    /* Тени для текста */
+    --text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    /* Максимальные ширины */
+    --max-width-sm: 600px;
+    --max-width-md: 800px;
+    --max-width-lg: 1100px;
+    --max-width-xl: 1200px;
+
+    /* Высоты */
+    --min-height-section: 450px;
+    --card-height: 320px;
+    --item-height: 350px;
+    --box-height: 420px;
+}
