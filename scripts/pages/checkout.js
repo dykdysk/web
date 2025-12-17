@@ -1,3 +1,5 @@
+let api = new ApiService();
+
 document.addEventListener('DOMContentLoaded', function() {
     loadOrderSummary();
     setupFormHandler();
@@ -178,7 +180,7 @@ function setupDeliveryToggle() {
 function setupFormHandler() {
     const form = document.getElementById('delivery-form');
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
         const donutCart = DonutsUtils.safeJSONParse(localStorage.getItem('donutsCart'));
@@ -226,35 +228,59 @@ function setupFormHandler() {
 
         const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
 
-        const formData = {
-            customer: {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value || null
-            },
-            delivery: {
-                method: deliveryMethod,
-                address: deliveryMethod === 'pickup'
-                    ? document.getElementById('pickup-address').value
-                    : document.getElementById('delivery-address').value
-            },
-            payment: {
-                method: paymentMethod
-            },
-            comments: document.getElementById('comments').value || null,
-            order: {
-                donuts: validDonuts,
-                boxes: validBoxes,
-                total: document.getElementById('total-amount').textContent
-            }
+        const cleanImagePath = (path) => {
+            if (!path) return null;
+            const lastSlash = Math.max(path.lastIndexOf('/'), path.lastIndexOf('\\'));
+            return lastSlash === -1 ? path : path.substring(lastSlash + 1);
         };
 
-        console.log('Данные заказа:', formData);
+        const donutsForBackend = validDonuts.map(donut => ({
+            ...donut,
+            image: cleanImagePath(donut.image)
+        }));
 
-        localStorage.removeItem('donutsCart');
-        localStorage.removeItem('boxCartItems');
+        const boxesForBackend = validBoxes.map(box => ({
+            ...box,
+            image: cleanImagePath(box.image),
+            donuts: box.donuts.map(donut => ({
+                ...donut,
+                image: cleanImagePath(donut.image)
+            }))
+        }));
 
-        window.location.href = '../pages/index.html';
+        const personInformation = {
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value || null,
+            delivery_method: deliveryMethod,
+            delivery_address: deliveryMethod === 'pickup'
+                ? document.getElementById('pickup-address').value
+                : document.getElementById('delivery-address').value,
+            payment_method: paymentMethod,
+            comment: document.getElementById('comments').value || null
+        };
+        const orderInformation = {
+            donuts: donutsForBackend,
+            boxes: boxesForBackend
+        };
+        const data = {
+            personInformation: personInformation,
+            orderInformation: orderInformation,
+        }
+        try {
+            const button-primary = document.querySelector('.btn-primary');
+            button-primary.disabled = true;
+            button-primary.classList.add('disabled');
+            const response = await api.createOrder(data);
+            localStorage.removeItem('donutsCart');
+            localStorage.removeItem('boxCartItems');
+            window.location.href = '../pages/index.html';
+        } catch (error) {
+            button.disabled = false;
+            button.classList.remove('disabled');
+            console.error('Ошибка при создании заказа:', error);
+            alert('Ошибка при оформлении заказа. Попробуйте позже.');
+        }
     });
 }
 

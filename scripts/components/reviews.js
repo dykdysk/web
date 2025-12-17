@@ -5,18 +5,15 @@ const DonutsReviews = {
     ratingErrorShown: false,
 
     init() {
+        this.api = new ApiService();
         this.loadReviews();
         this.setupEventListeners();
         this.renderReviews();
     },
 
-    loadReviews() {
-        const savedReviews = localStorage.getItem('donutsReviews');
+    async loadReviews() {
+        await savedReviews = this.api.getAll("reviews");
         this.reviews = savedReviews ? JSON.parse(savedReviews) : [];
-    },
-
-    saveReviews() {
-        localStorage.setItem('donutsReviews', JSON.stringify(this.reviews));
     },
 
     setupEventListeners() {
@@ -96,7 +93,7 @@ const DonutsReviews = {
         }
     },
 
-    submitReview(e) {
+    async submitReview(e) {
         e.preventDefault();
 
         const nameInput = document.getElementById('review-name');
@@ -140,37 +137,41 @@ const DonutsReviews = {
             date: new Date().toISOString()
         };
 
-        this.reviews.unshift(review);
-        this.saveReviews();
+        try {
+            this.reviews.unshift(review);
+            const response = this.api.createReview();
 
-        document.getElementById('review-form').reset();
-        document.getElementById('review-rating').value = 0;
-        document.querySelectorAll('.star').forEach(star => {
-            star.classList.remove('active');
-            star.style.color = '#ddd';
-        });
+            document.getElementById('review-form').reset();
+            document.getElementById('review-rating').value = 0;
+            document.querySelectorAll('.star').forEach(star => {
+                star.classList.remove('active');
+                star.style.color = '#ddd';
+            });
 
-        this.hideRatingError();
+            this.hideRatingError();
 
-        this.currentPage = 1;
-        this.renderReviews();
+            this.currentPage = 1;
+            this.renderReviews();
 
-        DonutsUtils.showNotification('Спасибо за ваш отзыв!');
+            DonutsUtils.showNotification('Спасибо за ваш отзыв!');
 
-        setTimeout(() => {
-            const firstReview = document.querySelector('.review-item');
-            if (firstReview) {
-                firstReview.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            setTimeout(() => {
+                const firstReview = document.querySelector('.review-item');
+                if (firstReview) {
+                    firstReview.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
 
-                firstReview.style.backgroundColor = '#fff5f7';
-                setTimeout(() => {
-                    firstReview.style.backgroundColor = '';
-                }, 2000);
-            }
-        }, 300);
+                    firstReview.style.backgroundColor = '#fff5f7';
+                    setTimeout(() => {
+                        firstReview.style.backgroundColor = '';
+                    }, 2000);
+                }
+            }, 300);
+        } catch (error) {
+            DonutsUtils.showNotification('Отзыв не был добавлен');
+        }
     },
 
     getSortedReviews() {

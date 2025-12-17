@@ -62,7 +62,8 @@ class EmailService{
             }
 
             foreach ($unique_images as $filename => $filepath) {
-                $mail->addEmbeddedImage($filepath, $filename, $filename);
+                $cid = md5($filename);
+                $mail->addEmbeddedImage($filepath, $cid, $filename);
             }
 
             $format_price = function ($price) {
@@ -91,7 +92,7 @@ class EmailService{
                 $items_html .= '
                     <tr>
                         <td style="padding: 10px; border-bottom: 1px solid #eee;">
-                            <img src="cid:' . htmlspecialchars($donut->image) . '" alt="' . htmlspecialchars($donut->name) . '" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+                            <img src="cid:' . md5($donut->image) . '" alt="' . htmlspecialchars($donut->name) . '" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
                         </td>
                         <td style="padding: 10px; border-bottom: 1px solid #eee;">' . htmlspecialchars($donut->name) . '</td>
                         <td style="padding: 10px; border-bottom: 1px solid #eee; text-align: center;">' . (int)$donut->quantity . ' шт.</td>
@@ -108,7 +109,7 @@ class EmailService{
                 $items_html .= '
                     <tr style="background-color: #f7f7f7;">
                         <td style="padding: 10px; border-bottom: 1px solid #ddd;">
-                            <img src="cid:' . htmlspecialchars($box->image) . '" alt="' . htmlspecialchars($box->title) . '" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+                            <img src="cid:' . md5($box->image) . '" alt="' . htmlspecialchars($box->title) . '" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
                         </td>
                         <td style="padding: 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Коробка: ' . htmlspecialchars($box->title) . '</td>
                         <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center; font-weight: bold;">' . (int)$box->quantity . ' шт.</td>
@@ -121,7 +122,7 @@ class EmailService{
                     $items_html .= '
                         <tr style="font-size: 12px; color: #555;">
                             <td style="padding: 5px 10px 5px 25px; border-bottom: 1px solid #eee;">
-                                <img src="cid:' . htmlspecialchars($donut->image) . '" alt="' . htmlspecialchars($donut->name) . '" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 5px;">
+                                <img src="cid:' . md5($donut->image) . '" alt="' . htmlspecialchars($donut->name) . '" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px; display: inline-block; vertical-align: middle; margin-right: 5px;">
                             </td>
                             <td style="padding: 5px 10px; border-bottom: 1px solid #eee;"> — ' . htmlspecialchars($donut->name) . '</td>
                             <td style="padding: 5px 10px; border-bottom: 1px solid #eee; text-align: center;">' . (int)$donut->quantity . ' шт.</td>
@@ -210,9 +211,8 @@ class EmailService{
             ';
             $mail->AltBody = 'Текстовый вариант для почтовых клиентов';
             $mail->send();
-            echo 'Письмо отправлено';
         } catch (Exception $e) {
-            echo "Ошибка отправки: {$mail->ErrorInfo}";
+            throw new Exception("Ошибка отправки: {$mail->ErrorInfo}");
         }
     }
 }
