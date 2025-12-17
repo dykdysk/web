@@ -4,16 +4,17 @@ const DonutsReviews = {
     currentSort: 'newest',
     ratingErrorShown: false,
 
-    init() {
+    async init() {
         this.api = new ApiService();
-        this.loadReviews();
+        await this.loadReviews();
         this.setupEventListeners();
         this.renderReviews();
     },
 
     async loadReviews() {
         const savedReviews = await this.api.getAll("reviews");
-        this.reviews = savedReviews ? JSON.parse(savedReviews) : [];
+        console.log(savedReviews["data"]);
+        this.reviews = savedReviews ? savedReviews.data : [];
 
         this.reviews = this.reviews.map(review => ({
             ...review,
@@ -338,15 +339,6 @@ const DonutsReviews = {
             });
         });
     },
-
-    async saveReviewsToStorage() {
-        const reviewsForStorage = this.reviews.map(review => ({
-            ...review,
-            date: review.date.toISOString()
-        }));
-
-        await this.api.saveAll("reviews", JSON.stringify(reviewsForStorage));
-    }
 };
 
 document.addEventListener('DOMContentLoaded', function() {

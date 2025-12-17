@@ -2,11 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     DonutsCart.init();
     DonutsUtils.initSmoothScroll();
-    DonutsReviews.init();
     DonutsHamburger.init();
     setupCartEditHandlers();
-    setupFeatureCardHover();
-    setupFeatureCardClick();
 });
 
 function setupCartEditHandlers() {
