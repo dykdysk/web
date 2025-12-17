@@ -83,4 +83,8 @@ class ApiService {
     createReview(data) {
         return this.request('reviews', 'POST', data);
     }
+
+    createOrder(data) {
+        return this.request('orders', 'POST', data);
+    }
 }
