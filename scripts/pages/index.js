@@ -1,6 +1,8 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     console.log('DOM Content Loaded - Donuts Shop');
 
+    await DataService.loadAllData();
+    console.log(DonutsData.promotions);
     const editingBoxIndex = localStorage.getItem('editingBoxIndex');
     if (editingBoxIndex !== null && editingBoxIndex !== 'undefined') {
         console.log('Editing box index found:', editingBoxIndex);

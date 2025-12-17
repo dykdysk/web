@@ -16,7 +16,6 @@ class PromotionRepository {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $promotion = new Promotion();
             $promotion->id = $row['id'];
-            $promotion->title = $row['title'];
             $promotion->description = $row['description'];
             $promotion->image = $row['image'];
             $promotions[] = $promotion;
@@ -37,7 +36,6 @@ class PromotionRepository {
 
         $promotion = new Promotion();
         $promotion->id = $row['id'];
-        $promotion->title = $row['title'];
         $promotion->description = $row['description'];
         $promotion->image = $row['image'];
         return $promotion;

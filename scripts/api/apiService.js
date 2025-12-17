@@ -1,10 +1,11 @@
 class ApiService {
     constructor() {
-        this.baseURL = 'https://web/php/router.php/';
+        this.baseURL = 'https://web/php/router.php';
     }
 
     async request(endpoint, method, data = null) {
         const url = `${this.baseURL}/${endpoint}`;
+        console.log(url);
         const options = {
             method: method,
             headers: {
