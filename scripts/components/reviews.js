@@ -12,8 +12,13 @@ const DonutsReviews = {
     },
 
     async loadReviews() {
-        await savedReviews = this.api.getAll("reviews");
+        const savedReviews = await this.api.getAll("reviews");
         this.reviews = savedReviews ? JSON.parse(savedReviews) : [];
+
+        this.reviews = this.reviews.map(review => ({
+            ...review,
+            date: new Date(review.date)
+        }));
     },
 
     setupEventListeners() {
@@ -130,16 +135,21 @@ const DonutsReviews = {
         }
 
         const review = {
-            id: Date.now(),
             name: name,
             rating: rating,
             text: text,
-            date: new Date().toISOString()
+            date: new Date()
         };
 
         try {
             this.reviews.unshift(review);
-            const response = this.api.createReview();
+
+            const reviewForServer = {
+                ...review,
+                date: review.date.toISOString()
+            };
+
+            const response = await this.api.createReview(reviewForServer);
 
             document.getElementById('review-form').reset();
             document.getElementById('review-rating').value = 0;
@@ -170,6 +180,7 @@ const DonutsReviews = {
                 }
             }, 300);
         } catch (error) {
+            console.error('Ошибка при отправке отзыва:', error);
             DonutsUtils.showNotification('Отзыв не был добавлен');
         }
     },
@@ -179,13 +190,13 @@ const DonutsReviews = {
 
         switch(this.currentSort) {
             case 'newest':
-                return reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+                return reviews.sort((a, b) => b.date - a.date);
             case 'oldest':
-                return reviews.sort((a, b) => new Date(a.date) - new Date(b.date));
+                return reviews.sort((a, b) => a.date - b.date);
             case 'highest':
-                return reviews.sort((a, b) => b.rating - a.rating || new Date(b.date) - new Date(a.date));
+                return reviews.sort((a, b) => b.rating - a.rating || b.date - a.date);
             case 'lowest':
-                return reviews.sort((a, b) => a.rating - b.rating || new Date(b.date) - new Date(a.date));
+                return reviews.sort((a, b) => a.rating - b.rating || b.date - a.date);
             default:
                 return reviews;
         }
@@ -222,7 +233,7 @@ const DonutsReviews = {
     },
 
     createReviewHTML(review) {
-        const date = new Date(review.date);
+        const date = review.date instanceof Date ? review.date : new Date(review.date);
         const formattedDate = date.toLocaleDateString('ru-RU', {
             year: 'numeric',
             month: 'long',
@@ -328,9 +339,16 @@ const DonutsReviews = {
         });
     },
 
+    async saveReviewsToStorage() {
+        const reviewsForStorage = this.reviews.map(review => ({
+            ...review,
+            date: review.date.toISOString()
+        }));
+
+        await this.api.saveAll("reviews", JSON.stringify(reviewsForStorage));
+    }
 };
 
 document.addEventListener('DOMContentLoaded', function() {
     DonutsReviews.init();
-
 });
