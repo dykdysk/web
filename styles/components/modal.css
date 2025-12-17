@@ -13,6 +13,11 @@
     -webkit-backdrop-filter: blur(8px);
 }
 
+.compact-tabs .catalog-tab.active::after {
+    content: none !important;
+}
+
+
 .box-builder-modal {
     background-color: white;
     border-radius: 15px;
@@ -120,8 +125,8 @@
 }
 
 .quantity-option.active {
-    background-color: #ffd700;
-    border-color: #ffd700;
+    background-color: #ffdc81;
+    border-color: #ffdc81;
     color: #333;
 }
 
@@ -266,7 +271,7 @@
 }
 
 .btn-add-to-box {
-    background-color: #ffd700;
+    background-color: #ffdc81;
     color: #333;
     border: none;
     padding: 8px 16px;
@@ -368,7 +373,7 @@
 
 .modal-actions .btn-next,
 .modal-actions .btn-add-to-cart-final {
-    background-color: #ffd700;
+    background-color: #ffdc81;
     color: #333;
     border: none;
 }
@@ -391,3 +396,205 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+
+
+@media (max-width: 768px) {
+    .modal-overlay {
+        padding: 10px;
+        align-items: flex-start;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .box-builder-modal {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 90vh !important;
+        margin: 0;
+        padding: 0;
+        border-radius: 10px;
+        animation: none;
+        transform: none;
+    }
+
+    .modal-header {
+        padding: 15px;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 1;
+    }
+
+    .modal-title {
+        font-size: 18px;
+        text-align: left;
+        padding-right: 40px;
+    }
+
+    .close-modal {
+        width: 30px;
+        height: 30px;
+        font-size: 22px;
+        right: 10px;
+    }
+
+    .box-builder-content {
+        padding: 15px;
+        max-height: calc(90vh - 70px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .box-options-row {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    .box-option-group.compact {
+        text-align: left;
+    }
+
+    .quantity-options,
+    .toggle-options {
+        justify-content: flex-start !important;
+    }
+
+    .box-catalog-items {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .box-catalog-item {
+        padding: 10px;
+        height: auto;
+        min-height: 200px;
+    }
+
+    .box-catalog-item img {
+        height: 80px;
+    }
+
+    .box-item-title {
+        font-size: 12px;
+        min-height: 32px;
+    }
+
+    .box-item-price {
+        font-size: 12px;
+    }
+
+    .btn-add-to-box {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    .box-quantity-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+    }
+
+    .box-item-quantity {
+        font-size: 14px;
+    }
+
+    .selected-items-container {
+        grid-template-columns: 1fr !important;
+        gap: 10px;
+    }
+
+    .selected-item {
+        padding: 10px;
+    }
+
+    .selected-item img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .selected-item-name {
+        font-size: 14px;
+    }
+
+    .selected-item-quantity {
+        font-size: 12px;
+    }
+
+    .modal-actions {
+        background-color: rgb(1,1,1,0);
+        flex-direction: column;
+        gap: 10px;
+        position: sticky;
+        bottom: 0;
+        padding: 15px 0 5px;
+        margin-top: 10px;
+        z-index: 100;
+    }
+
+    .modal-actions .btn {
+        width: 100% !important;
+        min-width: auto !important;
+        padding: 12px !important;
+        font-size: 14px;
+    }
+
+    .compact-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 5px;
+        margin: 0 -10px 15px;
+        padding: 0 10px 10px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .compact-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .compact-tabs .catalog-tab {
+        flex-shrink: 0;
+        white-space: nowrap;
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    .catalog-tab .new-badge {
+        position: static;
+        display: inline-block;
+        margin-left: 5px;
+        transform: none;
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .box-catalog-items {
+        grid-template-columns: 1fr !important;
+    }
+
+    .box-catalog-item {
+        min-height: 180px;
+    }
+
+    .box-catalog-item img {
+        height: 100px;
+    }
+
+    .box-option-group.compact h3 {
+        font-size: 13px;
+    }
+
+    .quantity-option,
+    .toggle-option {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+
+

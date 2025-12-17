@@ -60,7 +60,7 @@ const DonutsReviews = {
     previewRating(rating) {
         document.querySelectorAll('.star').forEach(star => {
             const starValue = parseInt(star.dataset.value);
-            star.style.color = starValue <= rating ? '#ffd700' : '#ddd';
+            star.style.color = starValue <= rating ? '#ffdc81' : '#ddd';
         });
     },
 
@@ -69,7 +69,7 @@ const DonutsReviews = {
         document.querySelectorAll('.star').forEach(star => {
             const starValue = parseInt(star.dataset.value);
             if (starValue <= currentRating) {
-                star.style.color = '#ffd700';
+                star.style.color = '#ffdc81';
             } else {
                 star.style.color = '#ddd';
             }

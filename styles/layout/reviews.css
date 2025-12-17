@@ -5,7 +5,7 @@
 }
 
 .reviews-section .container {
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -135,12 +135,12 @@
 
 .star:hover,
 .star:hover ~ .star {
-    color: #ffd700;
+    color: #ffdc81;
     transform: scale(1.1);
 }
 
 .star.active {
-    color: #ffd700;
+    color: #ffdc81;
 }
 
 
@@ -263,7 +263,7 @@
 
 .review-stars {
     font-size: 18px;
-    color: #ffd700;
+    color: #ffdc81;
     letter-spacing: 1px;
 }
 

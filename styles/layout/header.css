@@ -4,6 +4,8 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    width: 100%;
+    overflow: hidden;
 }
 
 .header-container {
@@ -14,23 +16,25 @@ header {
 .header-content {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding: 10px 0;
+    min-height: 60px;
+    position: relative;
 }
 
 .logo-section {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    margin-right: 40px;
+    margin-right: auto;
 }
 
 .logo {
-    width: 40px;
-    height: 40px;
-    background-color: #FF7E93;
-    border-radius: 50%;
+    width: 50px;
+    height: 50px;
     margin-right: 10px;
+    flex-shrink: 0;
+    object-fit: contain;
 }
 
 .company-name {
@@ -38,9 +42,12 @@ header {
     font-weight: 750;
     color: #CD5C5C;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
 }
 
-nav {
+nav:not(.checkout-steps) {
     display: flex;
     justify-content: flex-start;
     margin: 0;
@@ -76,17 +83,69 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    margin-left: auto;
+    margin-left: 15px;
 }
 
 .header-buttons .btn-cart {
     padding: 8px 16px;
     font-size: 14px;
     white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
+.cart-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    background-color: #FF7E93;
+    color: white;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 0 5px;
+}
 
 .hamburger {
     display: none;
 }
 
+
+.mobile-nav {
+    width: 100%;
+}
+
+.mobile-nav ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+}
+
+.mobile-nav ul li {
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.mobile-nav ul li:last-child {
+    border-bottom: none;
+}
+
+.mobile-nav ul li a {
+    margin: 0;
+    padding: 15px 20px;
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.mobile-nav ul li a:hover {
+    background-color: #f5f5f5;
+    color: #CD5C5C;
+}

@@ -302,7 +302,7 @@
 }
 
 .btn-edit-box {
-    background-color: #ffd700;
+    background-color: #ffdc81;
     color: #333;
     border: none;
     padding: 8px 16px;
@@ -333,7 +333,7 @@
     background-color: #e55a5a;
 }
 
-/* Мобильная версия боксов в корзине */
+
 @media (max-width: 480px) {
     .box-cart-header {
         flex-direction: row;

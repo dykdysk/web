@@ -1,10 +1,11 @@
 .hero .container {
     padding-top: 60px;
-    padding-bottom: 160px;
+    padding-bottom: 80px;
     display: flex;
-    align-items: center;
     gap: 10px;
     position: relative;
+    flex-wrap: wrap;
+    min-height: 700px;
 }
 
 .hero-content {
@@ -19,31 +20,114 @@
     font-size: 100px;
     color: #323030;
     margin-bottom: 5px;
+    line-height: 1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .hero p {
     line-height: 1.7;
     margin-bottom: 50px;
     font-weight: 500;
+    font-size: 16px;
 }
 
 .hero-image {
     position: absolute;
     right: 0;
-    top: 10%;
+    top: 0;
     flex: 1;
     text-align: center;
     z-index: 1;
     transform: scale(0.9);
-    width: 60%;
+    width: 70%;
+    max-width: 600px;
 }
 
 .hero-image img {
     border-radius: 10px;
     transform: translateY(0);
     transition: transform 0.5s ease;
+    max-width: 100%;
+    height: auto;
 }
 
 .hero-image img:hover {
     transform: translateY(-10px);
+}
+
+.btn-catalog {
+    background-color: #ffdc81;
+    color: #323030;
+    padding: 12px 50px;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+.btn-catalog:hover {
+    background-color: #edcb73;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        max-width: 100%;
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        font-size: 14px;
+        line-height: 1.4;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    .hero-image {
+        position: relative;
+        width: 100%;
+        top: 0;
+        margin: 20px auto 0;
+        transform: none;
+        order: 2;
+    }
+
+    .hero-image img {
+        max-width: 80%;
+        height: auto;
+    }
+
+    .btn-catalog {
+        padding: 10px 30px;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .btn-catalog {
+        padding: 8px 25px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 200px;
+    }
 }

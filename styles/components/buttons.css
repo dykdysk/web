@@ -34,7 +34,7 @@
 
 .btn-assemble,
 .btn-add-to-cart {
-    background-color: #ffd700;
+    background-color: #ffdc81;
     color: #333;
     padding: 8px 15px;
     font-weight: bold;
@@ -61,7 +61,7 @@
 }
 
 .btn-edit-order {
-    background-color: #ffd700;
+    background-color: #ffdc81;
     color: #333;
     border: none;
     padding: 10px 20px;
@@ -79,7 +79,7 @@
 }
 
 .btn-checkout {
-    background-color: #ff69b4;
+    background-color: #FF7E93;
     color: white;
     width: 100%;
     padding: 12px;
@@ -87,7 +87,7 @@
 }
 
 .btn-edit-box {
-    background-color: #ffd700;
+    background-color: #ffdc81;
     color: #333;
     border: none;
     padding: 8px 16px;

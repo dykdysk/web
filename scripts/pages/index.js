@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM Content Loaded - Donuts Shop');
 
-    // Проверяем наличие редактируемого бокса
     const editingBoxIndex = localStorage.getItem('editingBoxIndex');
     if (editingBoxIndex !== null && editingBoxIndex !== 'undefined') {
         console.log('Editing box index found:', editingBoxIndex);
@@ -13,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 500);
     }
 
-    // Инициализация компонентов с проверкой на доступность
     try {
         if (typeof DonutsPromotions !== 'undefined' && DonutsPromotions.init) {
             DonutsPromotions.init();
@@ -39,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         setupBoxAssembleHandlers();
         setupMobileCardHover();
 
-        // Инициализация плавной прокрутки
         if (typeof DonutsUtils !== 'undefined' && DonutsUtils.initSmoothScroll) {
             DonutsUtils.initSmoothScroll();
         }
@@ -132,7 +129,6 @@ function initCatalog() {
         catalogItems.appendChild(catalogItem);
     });
 
-    // Обработчик для кнопок "В корзину"
     catalogItems.addEventListener('click', function(e) {
         if (e.target.classList.contains('btn-add-to-cart')) {
             const id = e.target.getAttribute('data-id');
@@ -144,10 +140,9 @@ function initCatalog() {
                 DonutsCart.addDonutToCart(id, name, price, image);
             }
 
-            // Визуальная обратная связь
             const originalText = e.target.textContent;
             e.target.textContent = 'Добавлено!';
-            e.target.style.backgroundColor = '#4CAF50';
+            e.target.style.backgroundColor = '#FF7E93';
             e.target.style.color = 'white';
 
             setTimeout(() => {
@@ -165,14 +160,11 @@ function initCatalogTabs() {
 
     catalogTabs.forEach(tab => {
         tab.addEventListener('click', function() {
-            // Удаляем активный класс со всех вкладок
             catalogTabs.forEach(t => t.classList.remove('active'));
-            // Добавляем активный класс текущей вкладке
             this.classList.add('active');
 
             const category = this.getAttribute('data-category');
 
-            // Фильтруем товары по категории
             catalogItems.forEach(item => {
                 const itemCategories = item.getAttribute('data-categories').split(' ');
                 if (category === 'all' || itemCategories.includes(category)) {
@@ -225,7 +217,6 @@ function setupMobileCardHover() {
     }
 }
 
-// Функция для отображения сообщения об ошибке
 function showErrorMessage(message) {
     const errorDiv = document.createElement('div');
     errorDiv.style.cssText = `
@@ -253,7 +244,6 @@ function showErrorMessage(message) {
     }, 5000);
 }
 
-// Обработчик ошибок глобально
 window.addEventListener('error', function(e) {
     console.error('Global error caught:', e.error);
     if (e.error && e.error.toString().includes('eval')) {
