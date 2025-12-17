@@ -168,3 +168,22 @@ const DonutsResponsive = {
         });
     }
 };
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const logoSection = document.querySelector('.logo-section');
+
+    if (logoSection) {
+        logoSection.addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+        
+        logoSection.addEventListener('mouseenter', function() {
+            this.style.cursor = 'pointer';
+        });
+
+        logoSection.addEventListener('mouseleave', function() {
+            this.style.cursor = 'default';
+        });
+    }
+});
