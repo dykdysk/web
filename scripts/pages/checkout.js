@@ -268,16 +268,16 @@ function setupFormHandler() {
             orderInformation: orderInformation,
         }
         try {
-            const button-primary = document.querySelector('.btn-primary');
-            button-primary.disabled = true;
-            button-primary.classList.add('disabled');
+            const button_primary = document.querySelector('.btn-primary');
+            button_primary.disabled = true;
+            button_primary.classList.add('disabled');
             const response = await api.createOrder(data);
             localStorage.removeItem('donutsCart');
             localStorage.removeItem('boxCartItems');
             window.location.href = '../pages/index.html';
         } catch (error) {
-            button.disabled = false;
-            button.classList.remove('disabled');
+            button_primary.disabled = false;
+            button_primary.classList.remove('disabled');
             console.error('Ошибка при создании заказа:', error);
             alert('Ошибка при оформлении заказа. Попробуйте позже.');
         }
