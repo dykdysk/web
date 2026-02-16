@@ -13,8 +13,8 @@ const DonutsReviews = {
 
     async loadReviews() {
         const savedReviews = await this.api.getAll("reviews");
-        console.log(savedReviews["data"]);
-        this.reviews = savedReviews ? savedReviews.data : [];
+        console.log(savedReviews);
+        this.reviews = savedReviews ? savedReviews : [];
 
         this.reviews = this.reviews.map(review => ({
             ...review,

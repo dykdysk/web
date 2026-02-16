@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/web/php/router.php/promotions")
+@RequestMapping("/promotions")
 public class PromotionController {
     private final PromotionService promotionService;
     @Autowired

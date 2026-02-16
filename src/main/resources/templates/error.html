@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Donuts</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <button class="hamburger" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <a class="logo-section" href="../">
+                <img src="images/logo.png" alt="Donuts Shop" class="logo">
+                <div class="company-name">Donuts</div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="about">О нас</a></li>
+                    <li><a href="#promotions">Акции</a></li>
+                    <li><a href="#boxes">Боксы</a></li>
+                    <li><a href="#catalog">Каталог</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <button class="btn btn-cart" id="cart-button">
+                    Корзина <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="error">
+    <div class="container">
+        <div class="error-image">
+            <img src="images/error.png" alt="Вкусные пончики">
+        </div>
+    </div>
+</section>
+
+<footer id="contacts">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>О нас</h3>
+                <p>Мы готовим самые вкусные пончики по оригинальной технологии из натуральных ингредиентов.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>г. Пончик, ул. Пончиковая, д. 21</p>
+                <p>+375 (29) 123-45-67</p>
+                <p>info@donuts.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Часы работы</h3>
+                <p>Пн-Пт: 9:00 - 22:00</p>
+                <p>Сб-Вс: 10:00 - 21:00</p>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 Donuts Shop. Все права защищены.
+        </div>
+    </div>
+</footer>
+
+<script src="scripts/api/apiService.js"></script>
+<script src="scripts/core/data.js"></script>
+<script src="scripts/core/utils.js"></script>
+<script src="scripts/core/cart.js"></script>
+<script src="scripts/components/hamburger.js"></script>
+<script src="scripts/components/responsive-events.js"></script>
+<script src="scripts/components/promotions.js"></script>
+<script src="scripts/components/box-builder.js"></script>
+<script src="scripts/pages/index.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        DonutsResponsive.init();
+    });
+</script>
+</body>
+</html>

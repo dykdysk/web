@@ -21,19 +21,19 @@ public class Donut {
     private String image;
     @Column(name = "categories")
     private List<String> categories;
-    @Column(name = "isNew")
-    private Boolean isNew;
+    @Column(name = "is_new")
+    private Boolean is_new;
 
     public Donut(){}
 
-    public Donut(int id, String name, String description, float price, String image, List<String> categories, boolean isNew) {
+    public Donut(int id, String name, String description, Float price, String image, List<String> categories, Boolean is_new) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.image = image;
         this.categories = categories;
-        this.isNew = isNew;
+        this.is_new = is_new;
     }
 
     public int getId() {
@@ -60,7 +60,7 @@ public class Donut {
         return categories;
     }
 
-    public boolean isNew() {
-        return isNew;
+    public Boolean getIsNew() {
+        return is_new;
     }
 }

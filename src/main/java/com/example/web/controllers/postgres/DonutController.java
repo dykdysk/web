@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/web/php/router.php/donuts")
+@RequestMapping("/donuts")
 public class DonutController {
     private final DonutService donutService;
     @Autowired

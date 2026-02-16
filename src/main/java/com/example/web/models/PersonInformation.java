@@ -1,13 +1,16 @@
 package com.example.web.models;
 
 public class PersonInformation {
-    private final String name;
-    private final String phone;
-    private final String email;
-    private final String delivery_method;
-    private final String delivery_address;
-    private final String payment_method;
-    private final String comment;
+    private String name;
+    private String phone;
+    private String email;
+    private String delivery_method;
+    private String delivery_address;
+    private String payment_method;
+    private String comment;
+
+    public PersonInformation(){}
+
     public PersonInformation(String name, String phone, String email, String delivery_method, String delivery_address, String payment_method, String comment) {
         this.name = name;
         this.phone = phone;

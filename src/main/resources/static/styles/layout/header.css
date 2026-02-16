@@ -27,6 +27,8 @@ header {
     align-items: center;
     flex-shrink: 0;
     margin-right: auto;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .logo {

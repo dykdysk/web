@@ -1,4 +1,9 @@
 package com.example.web.repositories.mongo;
 
-public class OrderRepository {
+import com.example.web.models.Order;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface OrderRepository extends MongoRepository<Order, String> {
 }

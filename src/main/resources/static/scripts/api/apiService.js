@@ -1,6 +1,6 @@
 class ApiService {
     constructor() {
-        this.baseURL = 'https://web/php/router.php';
+        this.baseURL = 'http://localhost:8080';
     }
 
     async request(endpoint, method, data = null) {
@@ -12,6 +12,8 @@ class ApiService {
                 'Content-Type': 'application/json',
             },
         };
+        console.log(data);
+        console.log(JSON.stringify(data));
         if (data && method === 'POST') {
             options.body = JSON.stringify(data);
         }

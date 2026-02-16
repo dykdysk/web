@@ -16,6 +16,6 @@ public interface DonutRepository extends JpaRepository<Donut, Integer> {
     List<Donut> findByCategory(String category);
     @Query("SELECT d FROM Donut d WHERE d.price=:price")
     List<Donut> findByPrice(Float price);
-    @Query("SELECT d FROM Donut d WHERE d.isNew=:isNew")
+    @Query("SELECT d FROM Donut d WHERE d.is_new=:is_new")
     List<Donut> findByIsNew(Boolean isNew);
 }

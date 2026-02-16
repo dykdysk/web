@@ -19,14 +19,14 @@ class DataService {
 
             const [promotions, boxes, catalog] = await Promise.all([
                 this.api.getAll('promotions'),
-                this.api.getAll('boxes'), 
+                this.api.getAll('boxes'),
                 this.api.getAll('donuts')
             ]);
             
             DonutsData = {
-                promotions: promotions.data,
-                boxes: boxes.data,
-                catalog: catalog.data
+                promotions: promotions,
+                boxes: boxes,
+                catalog: catalog
             };
             
             this.isDataLoaded = true;
